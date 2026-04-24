@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Manisha Gandhi — Business & Corporate Law</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon-180.png">
+  <!-- Google Fonts: Playfair Display (display) + DM Sans (body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- ========================================================
+       NAVIGATION
+  ======================================================== -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="#home" class="nav-logo">
+      <img src="logo.png" alt="Manisha Gandhi Logo" class="logo-img">
+    </a>
+      <button class="hamburger" id="hamburger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <!-- HIDDEN: Uncomment when content is ready
+        <li><a href="#research">Research</a></li>
+        <li><a href="#publications">Publications</a></li>
+        <li><a href="#blog">Blog</a></li>
+        -->
+        <li><a href="#contact" class="nav-cta">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ========================================================
+       HERO / HOME
+  ======================================================== -->
+  <section id="home" class="hero">
+    <div class="hero-bg-text" aria-hidden="true">LAW</div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">LLM — Business &amp; Corporate Law</p>
+      <h1 class="hero-name">Manisha<br /><em>Gandhi</em></h1>
+      <div class="hero-divider"></div>
+      <p class="hero-intro">
+        A legal researcher with a rich foundation in English and Hindi literature,
+        now specialising in securities regulation, corporate governance, and
+        capital market law. Committed to advancing rigorous scholarship at the
+        intersection of language, regulatory policy, and business law in India
+        and beyond.
+      </p>
+      <div class="hero-actions">
+        <a href="#research" class="btn-primary">View Research</a>
+        <a href="#contact" class="btn-outline">Get in Touch</a>
+      </div>
+    </div>
+    <div class="hero-side">
+      <!-- Profile photo -->
+      <div class="hero-photo-wrap">
+        <div class="hero-photo">
+          <!--
+            PROFILE PHOTO:
+            Replace "profile.jpg" with your actual image filename.
+            Upload the image to the root of your GitHub repository
+            (same folder as index.html). Recommended: 400x500px, portrait.
+          -->
+          <img
+            src="profile.png"
+            alt="Manisha Gandhi — LLM Corporate & Securities Law"
+            onerror="this.closest('.hero-photo').classList.add('photo-fallback')"
+          />
+          <!-- Fallback initials shown when no image is uploaded yet -->
+          <div class="photo-initials" aria-hidden="true">MG</div>
+        </div>
+        <div class="hero-photo-tag">Corporate &amp; Securities Law</div>
+      </div>
+      <!-- Decorative rule block -->
+      <div class="hero-rule-block" aria-hidden="true">
+        <span>SEBI &amp; Capital Markets</span>
+        <span>Corporate Law</span>
+        <span>IPO Regulation</span>
+        <span>Law &amp; Language</span>
+      </div>
+    </div>
+    <a href="#about" class="scroll-hint" aria-label="Scroll down">
+      <span class="scroll-line"></span>
+      <span class="scroll-label">Scroll</span>
+    </a>
+  </section>
+
+  <!-- ========================================================
+       ABOUT
+  ======================================================== -->
+  <section id="about" class="section about-section">
+    <div class="container">
+      <div class="section-label">01 / About</div>
+      <div class="about-grid">
+
+        <!-- Left: Profile photo -->
+        <div class="about-photo-col">
+          <!--
+            PROFILE PHOTO (About section):
+            Same image file as the hero. Upload "profile.jpg" to your
+            GitHub repo root once and both sections update automatically.
+          -->
+          <div class="about-photo-frame">
+            <img
+              src="profile.png"
+              alt="Manisha Gandhi"
+              onerror="this.closest('.about-photo-frame').classList.add('photo-fallback')"
+            />
+            <div class="photo-initials" aria-hidden="true">MG</div>
+          </div>
+          <div class="about-photo-badge">
+            <span class="badge-title">Manisha Gandhi</span>
+            <span class="badge-sub">LLM — Business &amp; Corporate Law</span>
+          </div>
+        </div>
+
+        <!-- Middle: Bio text -->
+        <div class="about-bio">
+          <h2 class="section-title">Bridging Regulation<br /><em>and Practice</em></h2>
+          <p>
+            Manisha Gandhi is an LLM graduate in Business and Corporate Law whose
+            academic journey began in the humanities. She holds a Bachelor of Arts
+            and a Master of Arts in English Literature, alongside a Master of Arts
+            in Hindi — a multidisciplinary foundation that sharpened her skills in
+            critical analysis, legal writing, and interpretive reasoning across two
+            classical literary traditions.
+          </p>
+          <p>
+            Building on this humanistic grounding, Manisha pursued an LLB and
+            subsequently an LLM in Business and Corporate Law, developing deep
+            expertise in the regulatory architecture governing India's capital markets.
+            Her scholarly work is driven by a conviction that rigorous legal thinking
+            must engage meaningfully with the practical realities of securities
+            regulation, investor protection, and corporate accountability.
+          </p>
+          <p>
+            She aspires to contribute to regulatory reform dialogue, particularly
+            around SEBI's evolving mandate, IPO disclosure norms, and the governance
+            of listed entities in India. Her diverse academic background informs a
+            nuanced, interdisciplinary approach to legal scholarship.
+          </p>
+        </div>
+
+        <!-- Right: Details cards -->
+        <div class="about-details">
+          <div class="detail-card">
+            <div class="detail-icon">🎓</div>
+            <h3>Education</h3>
+            <ul>
+              <li>
+                <strong>LLM — Business &amp; Corporate Law</strong><br />
+                Sabarmati University, 2024 – 2025
+              </li>
+              <li>
+                <strong>LLB</strong><br />
+                Gujarat University, 2020 – 2023
+              </li>
+              <li>
+                <strong>MA — Hindi</strong><br />
+                MLSU, 2015 – 2017
+              </li>
+              <li>
+                <strong>MA — English Literature</strong><br />
+                MLSU, 2013 – 2015
+              </li>
+              <li>
+                <strong>BA</strong><br />
+                MLSU, 2010 – 2013
+              </li>
+            </ul>
+          </div>
+          <div class="detail-card">
+            <div class="detail-icon">⚖️</div>
+            <h3>Areas of Interest</h3>
+            <ul>
+              <li>SEBI Regulations &amp; Enforcement</li>
+              <li>IPO Disclosure &amp; Compliance</li>
+              <li>Corporate Governance of Listed Entities</li>
+              <li>Mergers, Acquisitions &amp; Takeover Code</li>
+              <li>Insider Trading Law</li>
+              <li>Securities Class Actions</li>
+              <li>Legal Language &amp; Plain-Language Drafting</li>
+              <li>Law &amp; Literature (Interdisciplinary Research)</li>
+            </ul>
+          </div>
+          <!-- <div class="detail-card">
+            <div class="detail-icon">🏆</div>
+            <h3>Achievements</h3>
+            <ul>
+              <li>Semi-Finalist, [Moot Court Name] 2024</li>
+              <li>Best Memorial, [Competition Name] 2023</li>
+              <li>Merit Scholarship, LLM 2023–2024</li>
+            </ul>
+          </div> -->
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       RESEARCH PAPERS — HIDDEN UNTIL CONTENT IS READY
+       To restore: remove the comment tags around this section
+       and uncomment the nav link above.
+  ======================================================== -->
+    <!-- <section id="research" class="section research-section">
+    <div class="container">
+      <div class="section-label">02 / Research</div>
+      <h2 class="section-title">Research <em>Papers</em></h2>
+      <p class="section-subtitle">
+        Peer-reviewed articles, working papers, and seminar submissions
+        exploring contemporary issues in corporate and securities law, with
+        an interdisciplinary lens drawn from literature and language studies.
+      </p>
+
+      <div class="research-grid">
+
+        <!-- Paper 1 
+        <article class="research-card">
+          <div class="card-tag">Securities Law</div>
+          <h3>SEBI's Regulatory Overreach: Analysing the Boundaries of Quasi-Judicial Power in Securities Adjudication</h3>
+          <p class="card-abstract">
+            This paper examines the constitutional and statutory limits of SEBI's
+            adjudicatory authority under the SEBI Act, 1992. It analyses landmark
+            SAT and Supreme Court decisions to map the evolving contours of due
+            process in securities enforcement, arguing for a clearer separation
+            between SEBI's investigative and adjudicatory functions.
+          </p>
+          <div class="card-meta">
+            <span>2024 &nbsp;|&nbsp; LLM Dissertation Draft</span>
+          </div>
+          <a href="#" class="card-link">Read Abstract →</a>
+        </article>
+
+        <!-- Paper 2 
+        <article class="research-card">
+          <div class="card-tag">Capital Markets</div>
+          <h3>Disclosure Adequacy in Indian IPOs: A Critical Review of SEBI's ICDR Regulations</h3>
+          <p class="card-abstract">
+            Through a comparative analysis of SEBI's Issue of Capital and Disclosure
+            Requirements Regulations with SEC Rule S-K and EU Prospectus Regulation,
+            this paper evaluates whether Indian IPO prospectus norms adequately protect
+            retail investors. It proposes targeted amendments to improve risk factor
+            specificity and financial statement accessibility.
+          </p>
+          <div class="card-meta">
+            <span>2024 &nbsp;|&nbsp; Seminar Paper</span>
+          </div>
+          <a href="#" class="card-link">Read Abstract →</a>
+        </article>
+
+        <!-- Paper 3 
+        <article class="research-card">
+          <div class="card-tag">Corporate Governance</div>
+          <h3>Independent Directors in India: Myth, Mandate, and the Post-Uday Kotak Committee Reality</h3>
+          <p class="card-abstract">
+            Drawing on empirical data from NSE-listed companies, this paper interrogates
+            whether SEBI's post-Kotak Committee reforms have meaningfully enhanced
+            independent director efficacy. It identifies structural impediments —
+            promoter influence, information asymmetry, and liability chilling — that
+            undermine board independence in practice.
+          </p>
+          <div class="card-meta">
+            <span>2023 &nbsp;|&nbsp; Research Paper</span>
+          </div>
+          <a href="#" class="card-link">Read Abstract →</a>
+        </article>
+
+        <!-- Paper 4
+        <article class="research-card">
+          <div class="card-tag">M&amp;A Law</div>
+          <h3>Creeping Acquisitions and the SEBI Takeover Code: Plugging the Gaps in Threshold Regulation</h3>
+          <p class="card-abstract">
+            This paper analyses how sophisticated acquirers exploit definitional
+            ambiguities in the SEBI (Substantial Acquisition of Shares and Takeovers)
+            Regulations, 2011 to avoid mandatory open offer obligations. It proposes
+            a look-through approach modelled on UK Panel practice to address regulatory
+            arbitrage in domestic M&amp;A transactions.
+          </p>
+          <div class="card-meta">
+            <span>2023 &nbsp;|&nbsp; Working Paper</span>
+          </div>
+          <a href="#" class="card-link">Read Abstract →</a>
+        </article>
+
+        <!-- Paper 5 — Interdisciplinary: Law & Literature 
+        <article class="research-card">
+          <div class="card-tag">Law &amp; Literature</div>
+          <h3>The Language of Corporate Contracts: Plain-Language Reform and the Readability Crisis in Indian Commercial Drafting</h3>
+          <p class="card-abstract">
+            Drawing on her background in English and Hindi literature, this paper
+            examines how the opacity of commercial contract language perpetuates
+            power asymmetries between sophisticated parties and retail investors or
+            small businesses. It advocates for a plain-language standard in SEBI-mandated
+            disclosures, benchmarked against readability reforms in UK and Australian
+            financial regulation.
+          </p>
+          <div class="card-meta">
+            <span>2023 &nbsp;|&nbsp; Interdisciplinary Research Paper</span>
+          </div>
+          <a href="#" class="card-link">Read Abstract →</a>
+        </article>
+
+        <!-- Paper 6 — Hindi literature & law angle 
+        <article class="research-card">
+          <div class="card-tag">Legal Linguistics</div>
+          <h3>Rajbhasha and Corporate Compliance: Assessing the Effectiveness of Hindi in Statutory Filings under the Companies Act, 2013</h3>
+          <p class="card-abstract">
+            This paper investigates the practical and constitutional dimensions of
+            Hindi as a medium for corporate compliance documentation under the
+            Companies Act, 2013 and SEBI regulations. It evaluates current bilingual
+            filing norms, identifies gaps in translation quality and legal equivalence,
+            and proposes a framework for more meaningful Rajbhasha compliance in
+            capital market disclosures.
+          </p>
+          <div class="card-meta">
+            <span>2022 &nbsp;|&nbsp; LLB Research Paper</span>
+          </div>
+          <a href="#" class="card-link">Read Abstract →</a>
+        </article>
+
+      </div>
+    </div>
+  </section>
+  -->
+
+  <!-- ========================================================
+       PUBLICATIONS & CONFERENCES — HIDDEN UNTIL CONTENT IS READY
+       To restore: remove the comment tags around this section
+       and uncomment the nav link above.
+  ======================================================== -->
+  <!--
+  <section id="publications" class="section publications-section">
+    <div class="container">
+      <div class="section-label">03 / Publications &amp; Conferences</div>
+      <h2 class="section-title">Presentations <em>&amp; Publications</em></h2>
+
+      <div class="pub-columns">
+
+        <!-- Journal Publications 
+        <div class="pub-group">
+          <h3 class="pub-group-title">Journal Publications</h3>
+          <div class="pub-entry">
+            <span class="pub-year">2024</span>
+            <div class="pub-info">
+              <p class="pub-title">"Towards a Principles-Based Approach to Related Party Transactions under the Companies Act, 2013"</p>
+              <p class="pub-venue">[Journal of Corporate Law Studies] — Vol. XX, Issue X <span class="pub-status forthcoming">Forthcoming</span></p>
+            </div>
+          </div>
+          <div class="pub-entry">
+            <span class="pub-year">2023</span>
+            <div class="pub-info">
+              <p class="pub-title">"The Language of Corporate Contracts: Plain-Language Reform in Indian Commercial Drafting"</p>
+              <p class="pub-venue">[National Law School Journal] — Vol. XX, pp. XX–XX</p>
+            </div>
+          </div>
+          <div class="pub-entry">
+            <span class="pub-year">2023</span>
+            <div class="pub-info">
+              <p class="pub-title">"Insider Trading Regulation in India: Lessons from the US and EU Frameworks"</p>
+              <p class="pub-venue">[Corporate Law Review] — Vol. XX, pp. XX–XX</p>
+            </div>
+          </div>
+          <div class="pub-entry">
+            <span class="pub-year">2022</span>
+            <div class="pub-info">
+              <p class="pub-title">"Rajbhasha and Corporate Compliance: Hindi in Statutory Filings under the Companies Act, 2013"</p>
+              <p class="pub-venue">[Student Bar Review] — Vol. X, pp. XX–XX</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Conference Presentations 
+        <div class="pub-group">
+          <h3 class="pub-group-title">Conference Presentations</h3>
+          <div class="pub-entry">
+            <span class="pub-year">2024</span>
+            <div class="pub-info">
+              <p class="pub-title">"SEBI's Enforcement Discretion and the Rule of Law"</p>
+              <p class="pub-venue">[National Seminar on Securities Regulation] — [City], India</p>
+            </div>
+          </div>
+          <div class="pub-entry">
+            <span class="pub-year">2024</span>
+            <div class="pub-info">
+              <p class="pub-title">"Retail Investor Protection in SME IPOs: Gaps and Remedies"</p>
+              <p class="pub-venue">[Annual Capital Markets Conference] — [University Name]</p>
+            </div>
+          </div>
+          <div class="pub-entry">
+            <span class="pub-year">2023</span>
+            <div class="pub-info">
+              <p class="pub-title">"Corporate Social Responsibility as a Governance Mechanism"</p>
+              <p class="pub-venue">[International Law Students' Association Conference] — [City]</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+  -->
+
+  <!-- ========================================================
+       BLOG — HIDDEN UNTIL CONTENT IS READY
+       To restore: remove the comment tags around this section
+       and uncomment the nav link above.
+  ======================================================== -->
+  <!--
+  <section id="blog" class="section blog-section">
+    <div class="container">
+      <div class="section-label">04 / Blog</div>
+      <h2 class="section-title">Legal <em>Perspectives</em></h2>
+      <p class="section-subtitle">
+        Accessible commentary on regulatory developments, judicial decisions,
+        and emerging questions in corporate and securities law.
+      </p>
+
+      <div class="blog-grid">
+
+        <!-- Post 1 
+        <article class="blog-card featured">
+          <div class="blog-tag">Securities Regulation</div>
+          <div class="blog-date">March 2025</div>
+          <h3>SEBI's New Delisting Framework: A Step Towards Fairer Price Discovery or a Promoter's Escape Hatch?</h3>
+          <p>
+            SEBI's overhauled delisting regulations, effective from 2024, introduce a
+            fixed price mechanism as an alternative to the reverse book-building process.
+            While the regulator frames this as a simplification measure, the reform raises
+            pointed questions about minority shareholder protection and the adequacy of
+            the floor price formula in thinly-traded securities…
+          </p>
+          <a href="#" class="card-link">Continue Reading →</a>
+        </article>
+
+        <!-- Post 2 
+        <article class="blog-card">
+          <div class="blog-tag">Law &amp; Language</div>
+          <div class="blog-date">February 2025</div>
+          <h3>Why SEBI's Prospectuses Still Read Like a Punishment: The Case for Plain-Language Disclosure</h3>
+          <p>
+            Drawing on her background in English and Hindi literature, Manisha examines
+            why Indian IPO prospectuses remain inaccessible to ordinary retail investors
+            despite years of reform rhetoric. Dense legalese, passive constructions, and
+            buried risk factors are not inevitable — they are choices, and regulators
+            elsewhere have successfully mandated something better…
+          </p>
+          <a href="#" class="card-link">Continue Reading →</a>
+        </article>
+
+        <!-- Post 3 
+        <article class="blog-card">
+          <div class="blog-tag">Rajbhasha &amp; Law</div>
+          <div class="blog-date">December 2024</div>
+          <h3>Is India's Corporate Law Ready to Speak Hindi? A Look at Rajbhasha Compliance Gaps</h3>
+          <p>
+            Despite constitutional mandates, Hindi remains a largely ceremonial presence
+            in India's corporate compliance landscape. This post explores the gap between
+            Rajbhasha policy and practice in MCA and SEBI filings — and asks whether
+            genuine bilingual disclosure could improve financial literacy and regulatory
+            reach among non-English-speaking stakeholders…
+          </p>
+          <a href="#" class="card-link">Continue Reading →</a>
+        </article>
+
+      </div>
+    </div>
+  </section>
+  -->
+
+  <!-- ========================================================
+       CONTACT
+  ======================================================== -->
+  <section id="contact" class="section contact-section">
+    <div class="container">
+      <div class="section-label">05 / Contact</div>
+      <div class="contact-inner">
+        <div class="contact-left">
+          <h2 class="section-title">Let's <em>Connect</em></h2>
+          <p>
+            I welcome opportunities for research collaboration, academic discussion,
+            and professional engagement. Whether you are a fellow researcher, a legal
+            practitioner, or a policy professional, feel free to reach out.
+          </p>
+          <div class="contact-links">
+            <a href="/cdn-cgi/l/email-protection#a1ccc0cfc8d2c9c08fc6c0cfc5c9c8e1c4d9c0ccd1cdc48fc2cecc" class="contact-item">
+              <span class="contact-icon">✉</span>
+              <div>
+                <span class="contact-label">Email</span>
+                <span class="contact-value"><span class="__cf_email__" data-cfemail="a7cac6c9ced4cfc689c0c6c9c3cfcee7c2dfc6cad7cbc289c4c8ca">[email&#160;protected]</span></span>
+              </div>
+            </a>
+            <a href="https://www.linkedin.com/in/manisha-p-gandhi" target="_blank" rel="noopener noreferrer" class="contact-item">
+              <span class="contact-icon">in</span>
+              <div>
+                <span class="contact-label">LinkedIn</span>
+                <span class="contact-value">linkedin.com/in/manisha-p-gandhi</span>
+              </div>
+            </a>
+            <a href="https://drive.google.com/file/d/1Rs7CbqxURNfSgRT20wfVWmo2N40406bv/view?usp=sharing" class="contact-item">
+              <span class="contact-icon">📄</span>
+              <div>
+                <span class="contact-label">Curriculum Vitae</span>
+                <span class="contact-value">Download PDF</span>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="contact-right">
+          <!-- Motivational law quote carousel -->
+          <div class="quote-carousel" id="quoteCarousel">
+ 
+            <div class="quote-slide active">
+              <div class="quote-mark">"</div>
+              <blockquote>The law must not remain a stranger to the people it governs. Justice delayed is not merely justice denied — it is justice betrayed.</blockquote>
+              <cite>— Dr. B.R. Ambedkar</cite>
+            </div>
+ 
+            <div class="quote-slide">
+              <div class="quote-mark">"</div>
+              <blockquote>A Constitution is not merely a document of governance — it is a living promise made by a nation to its people that they shall be treated with dignity and equality.</blockquote>
+              <cite>— Dr. B.R. Ambedkar</cite>
+            </div>
+ 
+            <div class="quote-slide">
+              <div class="quote-mark">"</div>
+              <blockquote>The strength of a legal system lies not in the severity of its punishments, but in the certainty and fairness with which it is applied to all, without exception.</blockquote>
+              <cite>— Nani Palkhivala, Jurist &amp; Constitutionalist</cite>
+            </div>
+ 
+            <div class="quote-slide">
+              <div class="quote-mark">"</div>
+              <blockquote>A lawyer who does not understand the soul of society cannot truly serve its laws. Law is not logic alone — it is the conscience of a civilisation.</blockquote>
+              <cite>— Fali S. Nariman, Senior Advocate</cite>
+            </div>
+ 
+            <div class="quote-slide">
+              <div class="quote-mark">"</div>
+              <blockquote>Where there is righteousness in the heart, there is beauty in the character. When there is beauty in the character, there is harmony in the home — and justice in the nation.</blockquote>
+              <cite>— A.P.J. Abdul Kalam</cite>
+            </div>
+ 
+            <div class="quote-slide">
+              <div class="quote-mark">"</div>
+              <blockquote>Real swaraj will come not by the acquisition of authority by a few, but by the acquisition of the capacity by all to resist authority when abused.</blockquote>
+              <cite>— Mahatma Gandhi</cite>
+            </div>
+ 
+            <!-- Carousel controls -->
+            <div class="carousel-controls">
+              <button class="carousel-btn" id="quotePrev" aria-label="Previous quote">&#8592;</button>
+              <div class="carousel-dots" id="carouselDots"></div>
+              <button class="carousel-btn" id="quoteNext" aria-label="Next quote">&#8594;</button>
+            </div>
+ 
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       FOOTER
+  ======================================================== -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-left">
+        <span class="footer-logo">Manisha Gandhi</span>
+        <span class="footer-tagline">LLB · LLM — Business &amp; Corporate Law · MA English · MA Hindi</span>
+      </div>
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <!-- HIDDEN: Uncomment when content is ready
+        <a href="#research">Research</a>
+        <a href="#publications">Publications</a>
+        <a href="#blog">Blog</a>
+        -->
+        <a href="#contact">Contact</a>
+      </nav>
+      <div class="footer-right">
+        <p>&copy; <span id="footer-year"></span> Manisha Gandhi. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
