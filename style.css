@@ -1,25 +1,79 @@
 /* ============================================================
-   style.css — Manisha Gandhi Law Portfolio
-   Design: Editorial legal aesthetic — navy, ivory, warm gold
+   style.css — Advocate Manisha Gandhi Law Portfolio
+   Design: Editorial legal aesthetic — Navy, Warm Gold, Ivory
+   Themes: Light (Default) & Dark
    Fonts: Playfair Display (display) + DM Sans (body)
    ============================================================ */
  
 /* -----------------------------------------------------------
    1. CSS CUSTOM PROPERTIES (Design Tokens)
 ----------------------------------------------------------- */
-:root {
-  /* Colors */
-  --navy:        #0e1c36;
-  --navy-mid:    #1a2f52;
-  --navy-light:  #2a4475;
-  --ivory:       #f8f5ef;
-  --ivory-dark:  #ede9e1;
-  --gold:        #b8965a;
-  --gold-light:  #d4ad72;
-  --charcoal:    #3a3a3a;
-  --grey:        #6e6e6e;
-  --grey-light:  #c8c8c8;
-  --white:       #ffffff;
+:root, html[data-theme="light"] {
+  /* Theme: Light (Default) */
+  --bg-primary:        #f8f5ef;
+  --bg-secondary:      #f0ece3;
+  --bg-card:           #ffffff;
+  --bg-card-hover:     #ffffff;
+  --text-primary:      #1a2436;
+  --text-secondary:    #4a5568;
+  --text-muted:        #718096;
+  --title-color:       #0e1c36;
+  --border-color:      rgba(14, 28, 54, 0.1);
+  --border-light:      rgba(14, 28, 54, 0.06);
+  --card-shadow:       0 8px 24px rgba(14, 28, 54, 0.06);
+ 
+  /* Navbar */
+  --bg-nav:            rgba(248, 245, 239, 0.94);
+  --bg-nav-scrolled:   rgba(255, 255, 255, 0.97);
+  --nav-text:          #0e1c36;
+  --nav-text-dim:      rgba(14, 28, 54, 0.72);
+  --nav-border:        rgba(159, 125, 67, 0.22);
+  --hamburger-bar:     #0e1c36;
+ 
+  /* Hero */
+  --hero-bg:           #f3eee3;
+  --hero-bg-text:      rgba(14, 28, 54, 0.035);
+  --hero-name:         #0e1c36;
+  --hero-intro:        #445166;
+  --hero-rule-color:   #2d3748;
+  --hero-rule-border:  rgba(14, 28, 54, 0.12);
+  --btn-outline-text:  #0e1c36;
+  --btn-outline-border: rgba(14, 28, 54, 0.35);
+ 
+  /* Accents */
+  --gold:              #9f7d43;
+  --gold-light:        #b8965a;
+  --gold-bg:           rgba(159, 125, 67, 0.1);
+ 
+  /* Contact Section */
+  --contact-bg:        #0e1c36;
+  --contact-text:      #ffffff;
+  --contact-text-dim:  rgba(255, 255, 255, 0.65);
+ 
+  /* Footer */
+  --footer-bg:         #080f1d;
+  --footer-text:       rgba(255, 255, 255, 0.6);
+ 
+  /* Modals */
+  --modal-bg:          #ffffff;
+  --modal-text:        #0e1c36;
+  --modal-border:      #9f7d43;
+ 
+  /* Standalone Page Hero */
+  --page-hero-bg:      #ede7dc;
+  --page-hero-title:   #0e1c36;
+  --page-hero-lead:    #4a5568;
+ 
+  /* Legacy aliases for backward compatibility */
+  --navy:              #0e1c36;
+  --navy-mid:          #1a2f52;
+  --navy-light:        #2a4475;
+  --ivory:             #f8f5ef;
+  --ivory-dark:        #ede9e1;
+  --charcoal:          #2d3748;
+  --grey:              #5a6679;
+  --grey-light:        #c8c8c8;
+  --white:             #ffffff;
  
   /* Typography */
   --font-display: 'Playfair Display', Georgia, serif;
@@ -31,6 +85,73 @@
  
   /* Transitions */
   --ease:         cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+ 
+html[data-theme="dark"] {
+  /* Theme: Dark */
+  --bg-primary:        #09101c;
+  --bg-secondary:      #0e1829;
+  --bg-card:           #122036;
+  --bg-card-hover:     #162742;
+  --text-primary:      #f4f6fa;
+  --text-secondary:    #a3b2c8;
+  --text-muted:        #6b7c96;
+  --title-color:       #ffffff;
+  --border-color:      rgba(184, 150, 90, 0.25);
+  --border-light:      rgba(255, 255, 255, 0.08);
+  --card-shadow:       0 12px 32px rgba(0, 0, 0, 0.35);
+ 
+  /* Navbar */
+  --bg-nav:            rgba(9, 16, 28, 0.95);
+  --bg-nav-scrolled:   rgba(9, 16, 28, 0.98);
+  --nav-text:          #ffffff;
+  --nav-text-dim:      rgba(255, 255, 255, 0.75);
+  --nav-border:        rgba(184, 150, 90, 0.25);
+  --hamburger-bar:     #ffffff;
+ 
+  /* Hero */
+  --hero-bg:           #09101c;
+  --hero-bg-text:      rgba(255, 255, 255, 0.03);
+  --hero-name:         #ffffff;
+  --hero-intro:        rgba(255, 255, 255, 0.7);
+  --hero-rule-color:   rgba(255, 255, 255, 0.65);
+  --hero-rule-border:  rgba(255, 255, 255, 0.12);
+  --btn-outline-text:  rgba(255, 255, 255, 0.85);
+  --btn-outline-border: rgba(255, 255, 255, 0.3);
+ 
+  /* Accents */
+  --gold:              #b8965a;
+  --gold-light:        #d4ad72;
+  --gold-bg:           rgba(184, 150, 90, 0.18);
+ 
+  /* Contact Section */
+  --contact-bg:        #070d18;
+  --contact-text:      #ffffff;
+  --contact-text-dim:  rgba(255, 255, 255, 0.65);
+ 
+  /* Footer */
+  --footer-bg:         #04070d;
+  --footer-text:       rgba(255, 255, 255, 0.45);
+ 
+  /* Modals */
+  --modal-bg:          #0e1c36;
+  --modal-text:        #ffffff;
+  --modal-border:      #b8965a;
+ 
+  /* Standalone Page Hero */
+  --page-hero-bg:      #09101c;
+  --page-hero-title:   #ffffff;
+  --page-hero-lead:    rgba(255, 255, 255, 0.75);
+ 
+  /* Legacy aliases for dark mode */
+  --navy:              #09101c;
+  --navy-mid:          #122036;
+  --navy-light:        #1d3152;
+  --ivory:             #09101c;
+  --ivory-dark:        #0e1829;
+  --charcoal:          #f4f6fa;
+  --grey:              #a3b2c8;
+  --grey-light:        #334155;
 }
  
 /* -----------------------------------------------------------
@@ -50,11 +171,12 @@ html {
 body {
   font-family: var(--font-body);
   font-weight: 400;
-  color: var(--charcoal);
-  background-color: var(--ivory);
+  color: var(--text-primary);
+  background-color: var(--bg-primary);
   line-height: 1.7;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
  
 img { max-width: 100%; display: block; }
@@ -88,7 +210,7 @@ ul { list-style: none; }
   font-family: var(--font-display);
   font-size: clamp(2rem, 4vw, 3rem);
   font-weight: 700;
-  color: var(--navy);
+  color: var(--title-color);
   line-height: 1.15;
   margin-bottom: 20px;
 }
@@ -100,7 +222,7 @@ ul { list-style: none; }
  
 .section-subtitle {
   max-width: 560px;
-  color: var(--grey);
+  color: var(--text-secondary);
   font-size: 1.05rem;
   margin-bottom: 56px;
   line-height: 1.75;
@@ -115,13 +237,16 @@ ul { list-style: none; }
   left: 0;
   right: 0;
   z-index: 1000;
-  transition: background 0.35s var(--ease), box-shadow 0.35s var(--ease);
+  background: var(--bg-nav);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--nav-border);
+  transition: background 0.35s var(--ease), box-shadow 0.35s var(--ease), border-color 0.35s;
 }
  
 #navbar.scrolled {
-  background: rgba(14, 28, 54, 0.97);
-  backdrop-filter: blur(10px);
-  box-shadow: 0 1px 0 rgba(184, 150, 90, 0.25);
+  background: var(--bg-nav-scrolled);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 1px 0 var(--nav-border);
 }
  
 .nav-inner {
@@ -135,31 +260,25 @@ ul { list-style: none; }
 }
  
 .nav-logo {
-  font-family: var(--font-display);
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--white);
-  letter-spacing: -0.02em;
-}
-
-.nav-logo {
   display: flex;
   align-items: center;
 }
-
+ 
 .logo-img {
-  height: 45px;
-  filter: brightness(1.1);
+  height: 44px;
+  filter: brightness(1.05);
 }
-
-.logo-dot {
-  color: var(--gold);
+ 
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 18px;
 }
  
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 36px;
+  gap: 32px;
 }
  
 .nav-links a {
@@ -167,7 +286,7 @@ ul { list-style: none; }
   font-weight: 500;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.75);
+  color: var(--nav-text-dim);
   transition: color 0.2s;
   position: relative;
 }
@@ -185,35 +304,58 @@ ul { list-style: none; }
  
 .nav-links a:hover,
 .nav-links a:focus {
-  color: var(--white);
+  color: var(--nav-text);
 }
  
 .nav-links a:hover::after {
   width: 100%;
 }
-
+ 
 .nav-links a.active {
   color: var(--gold);
 }
-
+ 
 .nav-links a.active::after {
   width: 100%;
 }
  
 .nav-cta {
   background: var(--gold) !important;
-  color: var(--navy) !important;
+  color: #ffffff !important;
   padding: 8px 20px;
   border-radius: 2px;
   letter-spacing: 0.06em !important;
   font-weight: 600 !important;
-  transition: background 0.2s, color 0.2s !important;
+  transition: background 0.2s, transform 0.15s !important;
 }
  
 .nav-cta::after { display: none !important; }
  
 .nav-cta:hover {
   background: var(--gold-light) !important;
+  transform: translateY(-1px);
+}
+ 
+/* Theme Toggle Button */
+.theme-toggle {
+  background: var(--gold-bg);
+  border: 1px solid var(--nav-border);
+  color: var(--nav-text);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1.05rem;
+  transition: background 0.2s, transform 0.2s, border-color 0.2s;
+  flex-shrink: 0;
+}
+ 
+.theme-toggle:hover {
+  background: var(--gold);
+  transform: rotate(15deg);
 }
  
 /* Hamburger (mobile) */
@@ -231,7 +373,7 @@ ul { list-style: none; }
   display: block;
   width: 24px;
   height: 2px;
-  background: var(--white);
+  background: var(--hamburger-bar);
   transition: transform 0.3s var(--ease), opacity 0.3s;
 }
  
@@ -240,7 +382,7 @@ ul { list-style: none; }
 ----------------------------------------------------------- */
 .hero {
   min-height: 100vh;
-  background: var(--navy);
+  background: var(--hero-bg);
   display: flex;
   align-items: center;
   position: relative;
@@ -248,6 +390,7 @@ ul { list-style: none; }
   padding: 100px 32px 80px;
   gap: 40px;
   max-width: 100%;
+  transition: background 0.3s ease;
 }
  
 /* Giant background text */
@@ -259,7 +402,7 @@ ul { list-style: none; }
   font-family: var(--font-display);
   font-size: clamp(200px, 25vw, 320px);
   font-weight: 700;
-  color: rgba(255, 255, 255, 0.03);
+  color: var(--hero-bg-text);
   letter-spacing: -0.04em;
   user-select: none;
   pointer-events: none;
@@ -287,7 +430,7 @@ ul { list-style: none; }
   font-family: var(--font-display);
   font-size: clamp(3.5rem, 8vw, 6.5rem);
   font-weight: 700;
-  color: var(--white);
+  color: var(--hero-name);
   line-height: 1;
   letter-spacing: -0.02em;
   margin-bottom: 32px;
@@ -308,7 +451,7 @@ ul { list-style: none; }
  
 .hero-intro {
   font-size: 1.05rem;
-  color: rgba(255, 255, 255, 0.65);
+  color: var(--hero-intro);
   max-width: 480px;
   line-height: 1.8;
   margin-bottom: 40px;
@@ -323,7 +466,7 @@ ul { list-style: none; }
 .btn-primary {
   display: inline-block;
   background: var(--gold);
-  color: var(--navy);
+  color: #ffffff;
   font-size: 0.82rem;
   font-weight: 600;
   letter-spacing: 0.08em;
@@ -340,8 +483,8 @@ ul { list-style: none; }
  
 .btn-outline {
   display: inline-block;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  color: rgba(255, 255, 255, 0.75);
+  border: 1px solid var(--btn-outline-border);
+  color: var(--btn-outline-text);
   font-size: 0.82rem;
   font-weight: 500;
   letter-spacing: 0.08em;
@@ -430,7 +573,7 @@ ul { list-style: none; }
   font-weight: 600;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.35);
+  color: var(--hero-rule-color);
   text-align: center;
 }
  
@@ -448,9 +591,9 @@ ul { list-style: none; }
   font-weight: 500;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.3);
+  color: var(--hero-rule-color);
   padding: 10px 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid var(--hero-rule-border);
   white-space: nowrap;
   transition: color 0.3s;
 }
@@ -488,7 +631,7 @@ ul { list-style: none; }
   font-size: 0.65rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.3);
+  color: var(--hero-rule-color);
 }
  
 @keyframes scrollPulse {
@@ -500,7 +643,7 @@ ul { list-style: none; }
    6. ABOUT SECTION
 ----------------------------------------------------------- */
 .about-section {
-  background: var(--ivory);
+  background: var(--bg-primary);
 }
  
 .about-grid {
@@ -610,16 +753,17 @@ ul { list-style: none; }
 }
  
 .detail-card {
-  background: var(--white);
-  border: 1px solid var(--ivory-dark);
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
   border-top: 3px solid var(--gold);
   padding: 28px 28px 24px;
   margin-bottom: 20px;
+  box-shadow: var(--card-shadow);
   transition: box-shadow 0.25s var(--ease), transform 0.25s var(--ease);
 }
  
 .detail-card:hover {
-  box-shadow: 0 12px 40px rgba(14, 28, 54, 0.08);
+  box-shadow: 0 12px 40px rgba(14, 28, 54, 0.12);
   transform: translateY(-3px);
 }
  
@@ -632,15 +776,15 @@ ul { list-style: none; }
   font-family: var(--font-display);
   font-size: 1.05rem;
   font-weight: 600;
-  color: var(--navy);
+  color: var(--title-color);
   margin-bottom: 14px;
 }
  
 .detail-card ul li {
   font-size: 0.9rem;
-  color: var(--charcoal);
+  color: var(--text-primary);
   padding: 7px 0;
-  border-bottom: 1px solid var(--ivory-dark);
+  border-bottom: 1px solid var(--border-light);
   line-height: 1.5;
 }
  
@@ -650,7 +794,7 @@ ul { list-style: none; }
  
 .detail-card ul li strong {
   display: block;
-  color: var(--navy);
+  color: var(--title-color);
   font-weight: 600;
 }
  
@@ -658,19 +802,13 @@ ul { list-style: none; }
    7. RESEARCH SECTION
 ----------------------------------------------------------- */
 .research-section {
-  background: var(--navy);
-}
- 
-.research-section .section-label,
-.research-section .section-title,
-.research-section .section-subtitle {
-  color: inherit;
+  background: var(--bg-primary);
 }
  
 .research-section .section-label { color: var(--gold); }
-.research-section .section-title { color: var(--white); }
-.research-section .section-title em { color: var(--gold-light); }
-.research-section .section-subtitle { color: rgba(255,255,255,0.5); }
+.research-section .section-title { color: var(--title-color); }
+.research-section .section-title em { color: var(--gold); }
+.research-section .section-subtitle { color: var(--text-secondary); }
  
 .research-grid {
   display: grid;
@@ -679,10 +817,11 @@ ul { list-style: none; }
 }
  
 .research-card {
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
   padding: 36px 32px 28px;
-  border-radius: 2px;
+  border-radius: 3px;
+  box-shadow: var(--card-shadow);
   transition: background 0.3s, border-color 0.3s, transform 0.25s var(--ease);
   display: flex;
   flex-direction: column;
@@ -690,8 +829,7 @@ ul { list-style: none; }
 }
  
 .research-card:hover {
-  background: rgba(255, 255, 255, 0.07);
-  border-color: rgba(184, 150, 90, 0.4);
+  border-color: var(--gold);
   transform: translateY(-4px);
 }
  
@@ -712,20 +850,20 @@ ul { list-style: none; }
   font-family: var(--font-display);
   font-size: 1.05rem;
   font-weight: 600;
-  color: var(--white);
+  color: var(--title-color);
   line-height: 1.4;
 }
  
 .card-abstract {
   font-size: 0.88rem;
-  color: rgba(255, 255, 255, 0.55);
+  color: var(--text-secondary);
   line-height: 1.8;
   flex: 1;
 }
  
 .card-meta {
   font-size: 0.75rem;
-  color: rgba(255, 255, 255, 0.3);
+  color: var(--text-muted);
   letter-spacing: 0.05em;
 }
  
@@ -749,7 +887,7 @@ ul { list-style: none; }
    8. PUBLICATIONS & CONFERENCES
 ----------------------------------------------------------- */
 .publications-section {
-  background: var(--ivory-dark);
+  background: var(--bg-primary);
 }
  
 .pub-columns {
@@ -762,7 +900,7 @@ ul { list-style: none; }
   font-family: var(--font-display);
   font-size: 1.15rem;
   font-weight: 600;
-  color: var(--navy);
+  color: var(--title-color);
   margin-bottom: 28px;
   padding-bottom: 12px;
   border-bottom: 2px solid var(--gold);
@@ -772,7 +910,7 @@ ul { list-style: none; }
   display: flex;
   gap: 24px;
   padding: 20px 0;
-  border-bottom: 1px solid rgba(14, 28, 54, 0.08);
+  border-bottom: 1px solid var(--border-light);
 }
  
 .pub-entry:last-child {
@@ -790,7 +928,7 @@ ul { list-style: none; }
  
 .pub-title {
   font-size: 0.92rem;
-  color: var(--navy);
+  color: var(--title-color);
   font-weight: 500;
   line-height: 1.5;
   margin-bottom: 5px;
@@ -798,7 +936,7 @@ ul { list-style: none; }
  
 .pub-venue {
   font-size: 0.8rem;
-  color: var(--grey);
+  color: var(--text-secondary);
   line-height: 1.5;
 }
  
@@ -824,7 +962,7 @@ ul { list-style: none; }
    9. BLOG SECTION
 ----------------------------------------------------------- */
 .blog-section {
-  background: var(--ivory);
+  background: var(--bg-primary);
 }
  
 .blog-grid {
@@ -834,23 +972,24 @@ ul { list-style: none; }
 }
  
 .blog-card {
-  background: var(--white);
-  border: 1px solid var(--ivory-dark);
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
   padding: 32px 28px 28px;
   display: flex;
   flex-direction: column;
   gap: 12px;
+  box-shadow: var(--card-shadow);
   transition: box-shadow 0.3s var(--ease), transform 0.25s var(--ease);
   border-radius: 2px;
 }
  
 .blog-card:hover {
-  box-shadow: 0 16px 48px rgba(14, 28, 54, 0.1);
+  box-shadow: 0 16px 48px rgba(14, 28, 54, 0.12);
   transform: translateY(-4px);
 }
  
 .blog-card.featured {
-  border-top: 4px solid var(--navy);
+  border-top: 4px solid var(--gold);
 }
  
 .blog-tag {
@@ -858,12 +997,12 @@ ul { list-style: none; }
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--navy-light);
+  color: var(--gold);
 }
  
 .blog-date {
   font-size: 0.75rem;
-  color: var(--grey-light);
+  color: var(--text-muted);
   letter-spacing: 0.06em;
 }
  
@@ -871,7 +1010,7 @@ ul { list-style: none; }
   font-family: var(--font-display);
   font-size: 1.1rem;
   font-weight: 600;
-  color: var(--navy);
+  color: var(--title-color);
   line-height: 1.35;
 }
  
@@ -881,7 +1020,7 @@ ul { list-style: none; }
  
 .blog-card p {
   font-size: 0.88rem;
-  color: var(--grey);
+  color: var(--text-secondary);
   line-height: 1.8;
   flex: 1;
 }
@@ -1347,6 +1486,20 @@ ul { list-style: none; }
   padding: 4px 12px;
   border-radius: 2px;
   margin-bottom: 10px;
+}
+
+.law-glimpse-logo-box {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.law-glimpse-logo-img {
+  max-height: 70px;
+  max-width: 140px;
+  object-fit: contain;
+  border-radius: 4px;
 }
 
 .law-glimpse-icon {

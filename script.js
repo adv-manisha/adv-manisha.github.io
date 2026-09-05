@@ -16,6 +16,7 @@
    1. DOM READY
 ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
+  initThemeToggle();
   initBciDisclaimer();
   initNavbar();
   initHamburger();
@@ -27,6 +28,39 @@ document.addEventListener('DOMContentLoaded', () => {
   initQuoteCarousel();
   setFooterYear();
 });
+
+/* ============================================================
+   1B. THEME TOGGLE (LIGHT / DARK) — Defaults to Light
+============================================================ */
+function initThemeToggle() {
+  const toggleBtn = document.getElementById('themeToggle');
+  const iconSpan = document.getElementById('themeIcon');
+  const STORAGE_KEY = 'adv_theme';
+
+  const updateIcon = (theme) => {
+    if (iconSpan) {
+      // If dark theme, show sun icon (click to switch to light)
+      // If light theme, show moon icon (click to switch to dark)
+      iconSpan.textContent = theme === 'dark' ? '☀️' : '🌙';
+    }
+  };
+
+  // Determine active theme (default to light)
+  const savedTheme = localStorage.getItem(STORAGE_KEY) || 'light';
+  document.documentElement.setAttribute('data-theme', savedTheme);
+  updateIcon(savedTheme);
+
+  if (toggleBtn) {
+    toggleBtn.addEventListener('click', () => {
+      const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
+      const nextTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+      document.documentElement.setAttribute('data-theme', nextTheme);
+      localStorage.setItem(STORAGE_KEY, nextTheme);
+      updateIcon(nextTheme);
+    });
+  }
+}
 
 /* ============================================================
    2. BAR COUNCIL OF INDIA (BCI RULE 36) DISCLAIMER MODAL

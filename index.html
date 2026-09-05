@@ -31,6 +31,14 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
 
+  <!-- Theme Initializer (Defaults to light theme) -->
+  <script>
+    (function() {
+      var saved = localStorage.getItem('adv_theme') || 'light';
+      document.documentElement.setAttribute('data-theme', saved);
+    })();
+  </script>
+
   <!-- JSON-LD Structured Data: LegalService & Person -->
   <script type="application/ld+json">
   {
@@ -41,6 +49,11 @@
         "@id": "https://adv-manisha.github.io/#advocate",
         "name": "Advocate Manisha Gandhi",
         "jobTitle": "Advocate & Legal Researcher",
+        "identifier": "G/1023/2024",
+        "memberOf": {
+          "@type": "Organization",
+          "name": "Bar Council of Gujarat"
+        },
         "worksFor": {
           "@type": "Organization",
           "name": "Law Glimpse",
@@ -114,19 +127,26 @@
       <a href="#home" class="nav-logo">
         <img src="logo.png" alt="Advocate Manisha Gandhi Logo" class="logo-img">
       </a>
-      <button class="hamburger" id="hamburger" aria-label="Open menu">
-        <span></span><span></span><span></span>
-      </button>
-      <ul class="nav-links" id="nav-links">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#services">Practice Areas</a></li>
-        <li><a href="research.html">Research</a></li>
-        <li><a href="publications.html">Publications</a></li>
-        <li><a href="blog.html">Blog</a></li>
-        <li><a href="#contact">Contact</a></li>
-        <li><a href="#contact" class="nav-cta">Legal Query</a></li>
-      </ul>
+      <div class="nav-right">
+        <ul class="nav-links" id="nav-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Practice Areas</a></li>
+          <!-- Uncomment when ready to activate separate pages:
+          <li><a href="research.html">Research</a></li>
+          <li><a href="publications.html">Publications</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          -->
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="#contact" class="nav-cta">Legal Query</a></li>
+        </ul>
+        <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark/light theme" title="Switch between Light and Dark Theme">
+          <span id="themeIcon">🌙</span>
+        </button>
+        <button class="hamburger" id="hamburger" aria-label="Open menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
     </div>
   </nav>
 
@@ -158,10 +178,11 @@
           />
           <div class="photo-initials" aria-hidden="true">MG</div>
         </div>
-        <div class="hero-photo-tag">Corporate &amp; Securities Law</div>
+        <div class="hero-photo-tag">Advocate · Bar Council G/1023/2024</div>
       </div>
       <!-- Decorative rule block -->
       <div class="hero-rule-block" aria-hidden="true">
+        <span>Bar Council: G/1023/2024</span>
         <span>SEBI &amp; Capital Markets</span>
         <span>Corporate Governance</span>
         <span>Commercial Contracts</span>
@@ -210,7 +231,15 @@
           
           <!-- Law Glimpse Spotlight Box -->
           <div class="law-glimpse-card">
-            <div class="law-glimpse-icon">🏛️</div>
+            <div class="law-glimpse-logo-box">
+              <img
+                src="law-glimpse-logo.png"
+                alt="Law Glimpse Logo"
+                class="law-glimpse-logo-img"
+                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+              />
+              <div class="law-glimpse-icon" style="display:none;">🏛️</div>
+            </div>
             <div class="law-glimpse-content">
               <span class="law-glimpse-badge">Leadership &amp; Initiative</span>
               <h3>Co-Founder, Law Glimpse</h3>
@@ -225,8 +254,13 @@
         <div class="about-details">
           <div class="detail-card">
             <div class="detail-icon">🎓</div>
-            <h3>Education &amp; Credentials</h3>
+            <h3>Education &amp; Bar Enrollment</h3>
             <ul>
+              <li>
+                <strong>Bar Council Enrollment</strong><br />
+                Enrolled with the Bar Council of Gujarat<br />
+                <span style="font-size: 0.8rem; color: var(--gold); font-weight: 600;">Advocate Enrollment No: G/1023/2024</span>
+              </li>
               <li>
                 <strong>LLM — Business &amp; Corporate Law</strong><br />
                 Sabarmati University, 2024 – 2025
@@ -370,7 +404,9 @@
 
   <!-- ========================================================
        SCHOLARLY HUB SPOTLIGHT (RESEARCH, PUBLICATIONS, BLOG)
+       Uncomment when ready to display on the landing page:
   ======================================================== -->
+  <!--
   <section class="section" style="background: #ffffff; border-top: 1px solid rgba(14, 28, 54, 0.08);">
     <div class="container">
       <div class="section-label">03 / Scholarship &amp; Insights</div>
@@ -417,13 +453,14 @@
       </div>
     </div>
   </section>
+  -->
 
   <!-- ========================================================
        CONTACT & CLIENT QUERY INTAKE HUB
   ======================================================== -->
   <section id="contact" class="section contact-section">
     <div class="container">
-      <div class="section-label">04 / Consultation &amp; Contact</div>
+      <div class="section-label">03 / Consultation &amp; Contact</div>
       <div class="contact-inner" style="align-items: flex-start;">
 
         <!-- Left: Direct Details & Quotes Carousel -->
@@ -569,15 +606,17 @@
     <div class="footer-inner">
       <div class="footer-left">
         <span class="footer-logo">Advocate Manisha Gandhi</span>
-        <span class="footer-tagline">Advocate · Co-Founder, Law Glimpse · LLM Business &amp; Corporate Law</span>
+        <span class="footer-tagline">Advocate · Bar Council of Gujarat (Enrol. No. G/1023/2024) · Co-Founder, Law Glimpse</span>
       </div>
       <nav class="footer-nav" aria-label="Footer navigation">
         <a href="#home">Home</a>
         <a href="#about">About</a>
         <a href="#services">Practice Areas</a>
+        <!-- Uncomment when ready:
         <a href="research.html">Research</a>
         <a href="publications.html">Publications</a>
         <a href="blog.html">Blog</a>
+        -->
         <a href="#contact">Contact</a>
       </nav>
       <div class="footer-right">

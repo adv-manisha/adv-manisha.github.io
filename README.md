@@ -13,6 +13,7 @@ Official personal and professional portal for **Advocate Manisha Gandhi** — Le
 Advocate Manisha Gandhi brings a rare, interdisciplinary perspective to commercial and securities jurisprudence. Combining classical humanities training with advanced legal qualifications, she specializes in capital market regulations, corporate governance, investor protection, and plain-language legal drafting.
 
 - **Role & Designation:** Advocate & Legal Researcher
+- **Bar Council Enrollment:** **Bar Council of Gujarat** (Enrollment No. **`G/1023/2024`**)
 - **Leadership:** **Co-Founder**, *Law Glimpse*
 - **Specialization:** Corporate & Business Law, SEBI Compliance, IPO Disclosure, Corporate Governance
 - **Academic Credentials:**
@@ -32,13 +33,14 @@ As **Co-Founder of Law Glimpse**, Advocate Manisha Gandhi is dedicated to democr
 
 ## 🌐 Website Overview & Core Sections
 
-The portal is designed with a bespoke **Editorial Legal Aesthetic** (deep navy `#0e1c36`, warm gold `#b8965a`, and archival ivory `#f8f5ef`), embodying institutional dignity, intellectual rigor, and modern responsiveness.
+The portal features a bespoke **Editorial Legal Aesthetic** with a full **Light and Dark Theme Switcher** (defaulting to the distinguished, archival **Light Theme**).
 
 ### Sections & Capabilities:
-1. **Dynamic Navigation Header:**
-   - Real-time scroll detection with blur backdrop.
-   - Dynamic links to **Home**, **About**, **Services**, **Research**, **Publications**, **Blog**, and **Contact**.
-   - Direct Call-To-Action (CTA): *"Consult / Submit Query"*.
+1. **Dynamic Navigation Header & Theme Switcher:**
+   - Real-time scroll detection with glassmorphism backdrop.
+   - Built-in **Light & Dark Theme Switcher** with persistent `localStorage` memory and automatic system compatibility.
+   - Dynamic links to **Home**, **About**, **Practice Areas**, and **Contact** (with **Research**, **Publications**, and **Blog** ready to uncomment when desired).
+   - Direct Call-To-Action (CTA): *"Legal Query"*.
    - Responsive mobile drawer menu.
 2. **Hero Section:**
    - Identity, professional summary, credentials, and dual CTAs.
