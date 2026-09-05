@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Study Hub — Landmark Judgments, Notes &amp; Memory Tricks | Adv. Manisha Gandhi</title>
+  <meta name="description" content="Law Glimpse Academic Hub by Advocate Manisha Gandhi. Landmark judgments with ratios, subject-wise law notes, and memory recall mnemonics for law students and judicial aspirants." />
+  <meta name="author" content="Advocate Manisha Gandhi" />
+  <link rel="canonical" href="https://adv-manisha.github.io/study.html" />
+
+  <!-- Open Graph / Social Media -->
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://adv-manisha.github.io/study.html" />
+  <meta property="og:title" content="Study Hub — Landmark Judgments, Notes &amp; Recall Tricks" />
+  <meta property="og:description" content="Curated legal study materials, case summaries, and memory tricks for law students and competitive exam aspirants by Adv. Manisha Gandhi, Co-Founder of Law Glimpse." />
+  <meta property="og:image" content="https://adv-manisha.github.io/profile.png" />
+
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon-180.png">
+
+  <!-- Google Fonts: Playfair Display + DM Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Theme Initializer (Strictly defaults to light theme) -->
+  <script>
+    (function() {
+      var saved = localStorage.getItem('adv_theme');
+      var theme = (saved === 'dark') ? 'dark' : 'light';
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+  </script>
+</head>
+<body>
+
+  <!-- ========================================================
+       BAR COUNCIL OF INDIA (BCI) DISCLAIMER MODAL
+       Strict compliance with Rule 36 of BCI Rules
+  ======================================================== -->
+  <div class="bci-modal-overlay" id="bciModalOverlay" role="dialog" aria-modal="true" aria-labelledby="bciTitle">
+    <div class="bci-modal">
+      <div class="bci-modal-header">
+        <span class="bci-scale-icon">⚖</span>
+        <div>
+          <h2 class="bci-modal-title" id="bciTitle">Regulatory Compliance Notice</h2>
+          <span class="bci-modal-subtitle">Rule 36 of Bar Council of India Rules</span>
+        </div>
+      </div>
+      <div class="bci-modal-body">
+        <p>As per the rules of the Bar Council of India, advocates are prohibited from soliciting work or advertising. By clicking "I Acknowledge &amp; Proceed", the user confirms and acknowledges that:</p>
+        <ul>
+          <li>The user is seeking information and academic materials relating to Advocate Manisha Gandhi and the Law Glimpse academic initiative of their own accord.</li>
+          <li>There has been no advertisement, personal communication, solicitation, or inducement of any sort whatsoever.</li>
+          <li>The study materials, case summaries, and memory aids are provided exclusively for educational and academic research purposes.</li>
+        </ul>
+      </div>
+      <div class="bci-modal-footer">
+        <button class="btn-bci-decline" id="bciDeclineBtn">Decline &amp; Exit</button>
+        <button class="btn-bci-agree" id="bciAgreeBtn">I Acknowledge &amp; Proceed</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================
+       NAVIGATION
+  ======================================================== -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="index.html#home" class="nav-logo">
+        <img src="logo.png" alt="Advocate Manisha Gandhi Logo" class="logo-img">
+      </a>
+      <div class="nav-right">
+        <ul class="nav-links" id="nav-links">
+          <li><a href="index.html#home">Home</a></li>
+          <li><a href="index.html#about">About</a></li>
+          <li><a href="index.html#services">Practice Areas</a></li>
+          <li><a href="study.html" class="active">Study Hub</a></li>
+          <!-- Uncomment when ready:
+          <li><a href="research.html">Research</a></li>
+          <li><a href="publications.html">Publications</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          -->
+          <li><a href="index.html#contact">Contact</a></li>
+          <li><a href="index.html#contact" class="nav-cta">Legal Query</a></li>
+          <li class="nav-theme-item">
+            <button id="themeToggle" type="button" class="theme-toggle" aria-label="Toggle dark/light theme" title="Switch to Dark Theme">
+              <span id="themeIcon" class="theme-icon">🌙</span>
+            </button>
+          </li>
+        </ul>
+        <button class="hamburger" id="hamburger" aria-label="Open menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ========================================================
+       PAGE HERO
+  ======================================================== -->
+  <header class="page-hero">
+    <div class="container">
+      <div class="page-breadcrumbs">
+        <a href="index.html">Home</a> <span>/</span> <a href="study.html">Study Hub</a> <span>/</span> <span>Landmark Judgments</span>
+      </div>
+      <span class="page-hero-eyebrow">Law Glimpse Academic Initiative</span>
+      <h1 class="page-hero-title">Landmark Judgments &amp;<br /><em>Precedents Repository</em></h1>
+      <p class="page-hero-lead">
+        Authoritative case analysis spanning the Supreme Court of India and State High Courts (Gujarat, Bombay, Delhi), with core ratio decidendi, statutory benchmarks, and downloadable case briefs.
+      </p>
+    </div>
+  </header>
+  <main class="study-section">
+    <div class="container">
+
+      <!-- Search & Filter Toolbar -->
+      <div class="study-toolbar">
+        <div class="study-search-wrap">
+          <span class="study-search-icon">🔍</span>
+          <input
+            type="text"
+            id="studySearchInput"
+            class="study-search-input"
+            placeholder="Search by case name, subject, citation, or statutory keyword..."
+            aria-label="Search landmark judgments"
+          />
+          <button type="button" id="studySearchClear" class="study-search-clear" aria-label="Clear search">✕</button>
+        </div>
+
+        <div class="study-filter-pills" role="group" aria-label="Filter by subject">
+          <span class="filter-label">Subject:</span>
+          <button type="button" class="filter-pill active" data-filter="all">All Subjects</button>
+          <button type="button" class="filter-pill" data-filter="constitutional">Constitutional Law</button>
+          <button type="button" class="filter-pill" data-filter="corporate">Corporate &amp; SEBI</button>
+          <button type="button" class="filter-pill" data-filter="criminal">Criminal Law &amp; BNSS</button>
+          <button type="button" class="filter-pill" data-filter="contracts">Contracts &amp; Civil</button>
+        </div>
+      </div>
+
+      <!-- View Switcher & Court Filter Toolbar -->
+      <div class="judgments-view-toolbar">
+        <div class="view-toggle-group" role="group" aria-label="Switch judgment view">
+          <button type="button" class="view-toggle-btn active" data-view="cards">
+            <span aria-hidden="true">🃏</span> Card View (All Cases)
+          </button>
+          <button type="button" class="view-toggle-btn" data-view="subject-table">
+            <span aria-hidden="true">📑</span> By Subject (SC &amp; State HCs)
+          </button>
+          <button type="button" class="view-toggle-btn" data-view="year-table">
+            <span aria-hidden="true">📅</span> By Year (Chronological)
+          </button>
+        </div>
+
+        <div class="court-filter-group">
+          <label for="courtScopeSelect" class="court-filter-label">Court Scope:</label>
+          <select id="courtScopeSelect" class="court-scope-select" aria-label="Filter judgments by court jurisdiction">
+            <option value="all">All Courts (SC + All State HCs)</option>
+            <option value="sc">🏛️ Supreme Court of India</option>
+            <option value="hc-all">⚖️ State High Courts (All)</option>
+            <option value="hc-gujarat">Gujarat High Court</option>
+            <option value="hc-bombay">Bombay High Court</option>
+            <option value="hc-delhi">Delhi High Court</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- VIEW 1: DYNAMIC CARDS (Active by default) -->
+      <div id="viewCards" class="legal-matrix-view active">
+        <div id="viewCardsGrid" class="study-grid"></div>
+      </div>
+
+      <!-- VIEW 2: SUBJECT-WISE TABLE -->
+      <div id="viewSubjectTable" class="legal-matrix-view active">
+          <div class="table-scroll-hint">← Scroll horizontally on small screens to inspect the full legal matrix →</div>
+
+          <!-- SUBJECT 1: CONSTITUTIONAL LAW -->
+          <div class="legal-group-section" data-subject="constitutional">
+            <div class="legal-group-header">
+              <h3 class="legal-group-title">
+                <span>🏛️</span> Constitutional Law &amp; Fundamental Rights
+              </h3>
+              <span class="legal-group-count">6 Landmark Rulings</span>
+            </div>
+
+            <!-- Supreme Court Subgroup -->
+            <div class="court-subgroup" data-court-subgroup="sc">
+              <div class="court-subgroup-header">
+                <span class="subgroup-icon">🏛️</span> Supreme Court of India (Apex Court Precedents)
+              </div>
+              <div class="legal-table-responsive">
+                <table class="legal-table">
+                  <thead>
+                    <tr>
+                      <th style="width: 26%;">Case Title &amp; Citation</th>
+                      <th style="width: 14%;">Bench &amp; Year</th>
+                      <th style="width: 12%;">Forum</th>
+                      <th style="width: 14%;">Key Section / Article</th>
+                      <th style="width: 24%;">Core Ratio Decidendi</th>
+                      <th style="width: 10%;">Brief</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr data-court="sc" data-court-type="sc" data-subject="constitutional" data-year="1973" data-keywords="kesavananda bharati basic structure kerala 368 amendment constitution golak nath">
+                      <td>
+                        <div class="col-case-title">Kesavananda Bharati v. State of Kerala</div>
+                        <div class="col-case-citation">(1973) 4 SCC 225</div>
+                      </td>
+                      <td>
+                        <div>1973</div>
+                        <div class="col-case-bench">13-Judge Bench</div>
+                      </td>
+                      <td><span class="court-badge badge-sc">Supreme Court</span></td>
+                      <td><span class="col-statutory">Article 368</span></td>
+                      <td>
+                        <div class="col-ratio-text">Parliament possesses wide constituent power to amend any provision of the Constitution, but cannot alter or destroy its <strong>Basic Structure</strong>.</div>
+                        <div class="col-ratio-takeaway">Overruled <em>Golak Nath</em>; solidified judicial review.</div>
+                      </td>
+                      <td>
+                        <a href="materials/landmark-judgments/kesavananda-bharati-1973.pdf" class="btn-table-pdf" download title="Download Case Brief PDF">
+                          <span>📄</span> PDF
+                        </a>
+                      </td>
+                    </tr>
+                    <tr data-court="sc" data-court-type="sc" data-subject="constitutional" data-year="2017" data-keywords="puttaswamy privacy fundamental right article 21 data protection mp sharma kharak singh">
+                      <td>
+                        <div class="col-case-title">Justice K.S. Puttaswamy v. Union of India</div>
+                        <div class="col-case-citation">(2017) 10 SCC 1</div>
+                      </td>
+                      <td>
+                        <div>2017</div>
+                        <div class="col-case-bench">9-Judge Bench</div>
+                      </td>
+                      <td><span class="court-badge badge-sc">Supreme Court</span></td>
+                      <td><span class="col-statutory">Article 21 &amp; Part III</span></td>
+                      <td>
+                        <div class="col-ratio-text">The <strong>Right to Privacy</strong> is a fundamental right emanating from personal liberty under Article 21 and the entire constellation of Part III freedoms.</div>
+                        <div class="col-ratio-takeaway">Established the 3-fold proportionality test.</div>
+                      </td>
+                      <td>
+                        <a href="materials/landmark-judgments/puttaswamy-privacy-2017.pdf" class="btn-table-pdf" download title="Download Case Brief PDF">
+                          <span>📄</span> PDF
+                        </a>
+                      </td>
+                    </tr>
+                    <tr data-court="sc" data-court-type="sc" data-subject="constitutional" data-year="2018" data-keywords="navtej johar 377 constitutional morality equality privacy dignity">
+                      <td>
+                        <div class="col-case-title">Navtej Singh Johar v. Union of India</div>
+                        <div class="col-case-citation">(2018) 10 SCC 1</div>
+                      </td>
+                      <td>
+                        <div>2018</div>
+                        <div class="col-case-bench">5-Judge Bench</div>
+                      </td>
+                      <td><span class="court-badge badge-sc">Supreme Court</span></td>
+                      <td><span class="col-statutory">Articles 14, 15, 19, 21</span></td>
+                      <td>
+                        <div class="col-ratio-text">Section 377 IPC, in so far as it penalizes consensual sexual activity between adults in private, is unconstitutional. <strong>Constitutional Morality</strong> supercedes popular morality.</div>
+                        <div class="col-ratio-takeaway">Affirmed identity and equal dignity as non-negotiable.</div>
+                      </td>
+                      <td>
+                        <a href="materials/landmark-judgments/navtej-johar-377-2018.pdf" class="btn-table-pdf" download title="Download Case Brief PDF">
+                          <span>📄</span> PDF
+                        </a>
+                      </td>
+                    </tr>
+                    <tr data-court="sc" data-court-type="sc" data-subject="constitutional" data-year="1978" data-keywords="maneka gandhi passport procedure established by law due process golden triangle 21">
+                      <td>
+                        <div class="col-case-title">Maneka Gandhi v. Union of India</div>
+                        <div class="col-case-citation">(1978) 1 SCC 248</div>
+                      </td>
+                      <td>
+                        <div>1978</div>
+                        <div class="col-case-bench">7-Judge Bench</div>
+                      </td>
+                      <td><span class="court-badge badge-sc">Supreme Court</span></td>
+                      <td><span class="col-statutory">Articles 14, 19, 21</span></td>
+                      <td>
+                        <div class="col-ratio-text">Procedure depriving liberty under Article 21 cannot be arbitrary, fanciful or oppressive; it must be <strong>just, fair and reasonable</strong>. Part III forms an interrelated 'Golden Triangle'.</div>
+                        <div class="col-ratio-takeaway">Imported substantive due process into Indian law.</div>
+                      </td>
+                      <td>
+                        <a href="materials/landmark-judgments/maneka-gandhi-art21-1978.pdf" class="btn-table-pdf" download title="Download Case Brief PDF">
+                          <span>📄</span> PDF
+                        </a>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- State High Courts Subgroup -->
+            <div class="court-subgroup" data-court-subgroup="hc">
+              <div class="court-subgroup-header">
+                <span class="subgroup-icon">⚖️</span> State High Courts (State-Wise Jurisprudence)
+              </div>
+              <div class="legal-table-responsive">
+                <table class="legal-table">
+                  <thead>
+                    <tr>
+                      <th style="width: 26%;">Case Title &amp; Citation</th>
+                      <th style="width: 14%;">Bench &amp; Year</th>
+                      <th style="width: 12%;">State / Court</th>
+                      <th style="width: 14%;">Key Section / Article</th>
+                      <th style="width: 24%;">Core Ratio Decidendi</th>
+                      <th style="width: 10%;">Brief</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr data-court="hc-gujarat" data-court-type="hc" data-subject="constitutional" data-year="2022" data-keywords="kirtikumar vyas gujarat high court 226 natural justice administrative review audi alteram partem">
+                      <td>
+                        <div class="col-case-title">Kirtikumar D. Vyas v. State of Gujarat</div>
+                        <div class="col-case-citation">2022 SCC OnLine Guj 1450</div>
+                      </td>
+                      <td>
+                        <div>2022</div>
+                        <div class="col-case-bench">Division Bench</div>
+                      </td>
+                      <td><span class="court-badge badge-hc badge-hc-gujarat">Gujarat HC</span></td>
+                      <td><span class="col-statutory">Article 226 &amp; 14</span></td>
+                      <td>
+                        <div class="col-ratio-text">High Court writ review extends to procedural fairness and protection against arbitrary state action in public service and contractual matters.</div>
+                        <div class="col-ratio-takeaway">Reiterated natural justice as an unwritten Article 14 command.</div>
+                      </td>
+                      <td>
+                        <a href="materials/landmark-judgments/gujarat-hc-kirtikumar-vyas-2022.pdf" class="btn-table-pdf" download title="Download Case Brief PDF">
+                          <span>📄</span> PDF
+                        </a>
+                      </td>
+                    </tr>
+                    <tr data-court="hc-delhi" data-court-type="hc" data-subject="constitutional" data-year="2009" data-keywords="naz foundation delhi high court 377 equality non-discrimination constitutional morality">
+                      <td>
+                        <div class="col-case-title">Naz Foundation v. Govt. of NCT of Delhi</div>
+                        <div class="col-case-citation">2009 SCC OnLine Del 1662</div>
+                      </td>
+                      <td>
+                        <div>2009</div>
+                        <div class="col-case-bench">Division Bench</div>
+                      </td>
+                      <td><span class="court-badge badge-hc badge-hc-delhi">Delhi HC</span></td>
+                      <td><span class="col-statutory">Articles 14, 15, 21</span></td>
+                      <td>
+                        <div class="col-ratio-text">State cannot penalize personal adult autonomy based solely on public moral disapproval; constitutional inclusivity must prevail.</div>
+                        <div class="col-ratio-takeaway">Groundbreaking foundation for privacy and LGBTQ+ rights.</div>
+                      </td>
+                      <td>
+                        <a href="materials/landmark-judgments/delhi-hc-naz-foundation-2009.pdf" class="btn-table-pdf" download title="Download Case Brief PDF">
+                          <span>📄</span> PDF
+                        </a>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+      <!-- VIEW 3: YEAR-WISE TABLE -->
+      <div id="viewYearTable" class="legal-matrix-view">
+          <div class="table-scroll-hint">← Scroll horizontally on small screens to inspect the full legal matrix →</div>
+
+          <!-- ERA 1: 2024 - 2023 -->
+          <div class="legal-group-section" data-year-group="2024-2023">
+            <div class="legal-group-header">
+              <h3 class="legal-group-title">
+                <span>📅</span> 2024 – 2023: Contemporary Precedents
+              </h3>
+              <span class="legal-group-count">2 Landmark Decisions</span>
+            </div>
+            <div class="legal-table-responsive">
+              <table class="legal-table">
+                <thead>
+                  <tr>
+                    <th style="width: 10%;">Year</th>
+                    <th style="width: 14%;">Court / State</th>
+                    <th style="width: 26%;">Case Title &amp; Citation</th>
+                    <th style="width: 14%;">Subject Area</th>
+                    <th style="width: 26%;">Ratio Decidendi &amp; Key Holding</th>
+                    <th style="width: 10%;">Brief</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr data-court="hc-bombay" data-court-type="hc" data-subject="criminal" data-year="2024" data-keywords="pradeep sharma bombay high court 2024 circumstantial evidence proof">
+                    <td><strong>2024</strong></td>
+                    <td><span class="court-badge badge-hc badge-hc-bombay">Bombay HC</span></td>
+                    <td>
+                      <div class="col-case-title">Pradeep Sharma v. State of Maharashtra</div>
+                      <div class="col-case-citation">2024 SCC OnLine Bom 882</div>
+                    </td>
+                    <td><span class="col-statutory">Criminal Law / Evidence</span></td>
+                    <td>
+                      <div class="col-ratio-text">Circumstantial evidence must form an unbroken chain pointing exclusively to the accused’s guilt; presumption of innocence remains paramount.</div>
+                    </td>
+                    <td>
+                      <a href="materials/landmark-judgments/bombay-hc-pradeep-sharma-2024.pdf" class="btn-table-pdf" download title="Download Case Brief PDF">
+                        <span>📄</span> PDF
+                      </a>
+                    </td>
+                  </tr>
+                  <tr data-court="sc" data-court-type="sc" data-subject="contracts" data-year="2023" data-keywords="stamp act 2023 arbitration agreements 7 judge bench supreme court">
+                    <td><strong>2023</strong></td>
+                    <td><span class="court-badge badge-sc">Supreme Court</span></td>
+                    <td>
+                      <div class="col-case-title">In Re: Interplay Between Arbitration Agreements &amp; Stamp Act</div>
+                      <div class="col-case-citation">2023 SCC OnLine SC 1666</div>
+                    </td>
+                    <td><span class="col-statutory">Arbitration &amp; ADR</span></td>
+                    <td>
+                      <div class="col-ratio-text">Insufficient stamping of an arbitration agreement is a curable defect; referral courts under Sec 11/8 must solely verify agreement existence.</div>
+                    </td>
+                    <td>
+                      <a href="materials/landmark-judgments/stamp-act-arbitration-2023.pdf" class="btn-table-pdf" download title="Download Case Brief PDF">
+                        <span>📄</span> PDF
+                      </a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- ERA 2: 2022 - 2020 -->
+          <div class="legal-group-section" data-year-group="2022-2020">
+            <div class="legal-group-header">
+              <h3 class="legal-group-title">
+                <span>📅</span> 2022 – 2020: Reform, Corporate &amp; Bail Jurisprudence
+              </h3>
+              <span class="legal-group-count">7 Landmark Decisions</span>
+            </div>
+            <div class="legal-table-responsive">
+              <table class="legal-table">
+                <thead>
+                  <tr>
+                    <th style="width: 10%;">Year</th>
+                    <th style="width: 14%;">Court / State</th>
+                    <th style="width: 26%;">Case Title &amp; Citation</th>
+                    <th style="width: 14%;">Subject Area</th>
+                    <th style="width: 26%;">Ratio Decidendi &amp; Key Holding</th>
+                    <th style="width: 10%;">Brief</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr data-court="sc" data-court-type="sc" data-subject="criminal" data-year="2022" data-keywords="satender antil 2022 cbi bail categories supreme court">
+                    <td><strong>2022</strong></td>
+                    <td><span class="court-badge badge-sc">Supreme Court</span></td>
+                    <td>
+                      <div class="col-case-title">Satender Kumar Antil v. CBI</div>
+                      <div class="col-case-citation">(2022) 10 SCC 51</div>
+                    </td>
+                    <td><span class="col-statutory">Criminal Procedure</span></td>
+                    <td>
+                      <div class="col-ratio-text">Categorization of offences for bail disposal. Reaffirmed 'Bail is the rule, jail is the exception' to protect undertrials from arbitrary detention.</div>
+                    </td>
+                    <td>
+                      <a href="materials/landmark-judgments/satender-antil-bail-2022.pdf" class="btn-table-pdf" download title="Download Case Brief PDF">
+                        <span>📄</span> PDF
+                      </a>
+                    </td>
+                  </tr>
+                  <tr data-court="hc-gujarat" data-court-type="hc" data-subject="constitutional" data-year="2022" data-keywords="kirtikumar vyas 2022 gujarat high court 226 natural justice">
+                    <td><strong>2022</strong></td>
+                    <td><span class="court-badge badge-hc badge-hc-gujarat">Gujarat HC</span></td>
+                    <td>
+                      <div class="col-case-title">Kirtikumar D. Vyas v. State of Gujarat</div>
+                      <div class="col-case-citation">2022 SCC OnLine Guj 1450</div>
+                    </td>
+                    <td><span class="col-statutory">Constitutional Law</span></td>
+                    <td>
+                      <div class="col-ratio-text">Natural justice (audi alteram partem) is an intrinsic facet of Article 14 applicable across public administration and service orders.</div>
+                    </td>
+                    <td>
+                      <a href="materials/landmark-judgments/gujarat-hc-kirtikumar-vyas-2022.pdf" class="btn-table-pdf" download title="Download Case Brief PDF">
+                        <span>📄</span> PDF
+                      </a>
+                    </td>
+                  </tr>
+                  <tr data-court="hc-gujarat" data-court-type="hc" data-subject="criminal" data-year="2022" data-keywords="sandip gupta 2022 gujarat high court gujctoc organized crime">
+                    <td><strong>2022</strong></td>
+                    <td><span class="court-badge badge-hc badge-hc-gujarat">Gujarat HC</span></td>
+                    <td>
+                      <div class="col-case-title">State of Gujarat v. Sandip Omprakash Gupta</div>
+                      <div class="col-case-citation">2022 SCC OnLine Guj 2315</div>
+                    </td>
+                    <td><span class="col-statutory">Criminal Law</span></td>
+                    <td>
+                      <div class="col-ratio-text">Stringent special crime enactments demand strict statutory compliance; prior sanction is a non-negotiable constitutional shield.</div>
+                    </td>
+                    <td>
+                      <a href="materials/landmark-judgments/gujarat-hc-sandip-gupta-2022.pdf" class="btn-table-pdf" download title="Download Case Brief PDF">
+                        <span>📄</span> PDF
+                      </a>
+                    </td>
+                  </tr>
+                  <tr data-court="hc-gujarat" data-court-type="hc" data-subject="contracts" data-year="2022" data-keywords="ge power nhpc 2022 gujarat high court section 9 bank guarantee">
+                    <td><strong>2022</strong></td>
+                    <td><span class="court-badge badge-hc badge-hc-gujarat">Gujarat HC</span></td>
+                    <td>
+                      <div class="col-case-title">GE Power India Ltd. v. NHPC Ltd.</div>
+                      <div class="col-case-citation">2022 SCC OnLine Guj 2110</div>
+                    </td>
+                    <td><span class="col-statutory">Arbitration &amp; ADR</span></td>
+                    <td>
+                      <div class="col-ratio-text">Injunctions against unconditional bank guarantees in arbitration require proof of egregious fraud or irretrievable injustice.</div>
+                    </td>
+                    <td>
+                      <a href="materials/landmark-judgments/gujarat-hc-ge-power-nhpc-2022.pdf" class="btn-table-pdf" download title="Download Case Brief PDF">
+                        <span>📄</span> PDF
+                      </a>
+                    </td>
+                  </tr>
+                  <tr data-court="sc" data-court-type="sc" data-subject="corporate" data-year="2021" data-keywords="tata cyrus mistry 2021 oppression mismanagement supreme court">
+                    <td><strong>2021</strong></td>
+                    <td><span class="court-badge badge-sc">Supreme Court</span></td>
+                    <td>
+                      <div class="col-case-title">Tata Consultancy Services v. Cyrus Investments</div>
+                      <div class="col-case-citation">(2021) 9 SCC 449</div>
+                    </td>
+                    <td><span class="col-statutory">Corporate Law</span></td>
+                    <td>
+                      <div class="col-ratio-text">Removal of a Chairman/Director does not equate to oppression under Section 241 without proof of just and equitable winding up.</div>
+                    </td>
+                    <td>
+                      <a href="materials/landmark-judgments/tata-cyrus-mistry-2021.pdf" class="btn-table-pdf" download title="Download Case Brief PDF">
+                        <span>📄</span> PDF
+                      </a>
+                    </td>
+                  </tr>
+                  <tr data-court="sc" data-court-type="sc" data-subject="contracts" data-year="2021" data-keywords="p mohanraj 2021 ni act ibc moratorium supreme court">
+                    <td><strong>2021</strong></td>
+                    <td><span class="court-badge badge-sc">Supreme Court</span></td>
+                    <td>
+                      <div class="col-case-title">P. Mohanraj v. Shah Brothers ISPAT Pvt Ltd</div>
+                      <div class="col-case-citation">(2021) 6 SCC 258</div>
+                    </td>
+                    <td><span class="col-statutory">Commercial / NI Act</span></td>
+                    <td>
+                      <div class="col-ratio-text">Section 14 IBC moratorium halts quasi-criminal Sec 138 NI Act proceedings against corporate debtors; natural directors remain personally liable.</div>
+                    </td>
+                    <td>
+                      <a href="materials/landmark-judgments/p-mohanraj-ni-act-ibc-2021.pdf" class="btn-table-pdf" download title="Download Case Brief PDF">
+                        <span>📄</span> PDF
+                      </a>
+                    </td>
+                  </tr>
+                  <tr data-court="hc-gujarat" data-court-type="hc" data-subject="contracts" data-year="2020" data-keywords="rajeshbhai patel 2020 gujarat high court ni act 139 rebuttal">
+                    <td><strong>2020</strong></td>
+                    <td><span class="court-badge badge-hc badge-hc-gujarat">Gujarat HC</span></td>
+                    <td>
+                      <div class="col-case-title">Rajeshbhai Muljibhai Patel v. State of Gujarat</div>
+                      <div class="col-case-citation">(2020) 3 SCC 794</div>
+                    </td>
+                    <td><span class="col-statutory">Negotiable Instruments</span></td>
+                    <td>
+                      <div class="col-ratio-text">Statutory presumption under Section 139 NI Act is rebuttable on a preponderance of probabilities without mandatory testimony in the witness box.</div>
+                    </td>
+                    <td>
+                      <a href="materials/landmark-judgments/gujarat-hc-rajeshbhai-patel-2020.pdf" class="btn-table-pdf" download title="Download Case Brief PDF">
+                        <span>📄</span> PDF
+                      </a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- ERA 3: 2019 - 2015 -->
+          <div class="legal-group-section" data-year-group="2019-2015">
+            <div class="legal-group-header">
+              <h3 class="legal-group-title">
+                <span>📅</span> 2019 – 2015: Privacy, Dignity &amp; Modern Constitutionalism
+              </h3>
+              <span class="legal-group-count">2 Landmark Decisions</span>
+            </div>
+            <div class="legal-table-responsive">
+              <table class="legal-table">
+                <thead>
+                  <tr>
+                    <th style="width: 10%;">Year</th>
+                    <th style="width: 14%;">Court / State</th>
+                    <th style="width: 26%;">Case Title &amp; Citation</th>
+                    <th style="width: 14%;">Subject Area</th>
+                    <th style="width: 26%;">Ratio Decidendi &amp; Key Holding</th>
+                    <th style="width: 10%;">Brief</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr data-court="sc" data-court-type="sc" data-subject="constitutional" data-year="2018" data-keywords="navtej johar 2018 377 constitutional morality supreme court">
+                    <td><strong>2018</strong></td>
+                    <td><span class="court-badge badge-sc">Supreme Court</span></td>
+                    <td>
+                      <div class="col-case-title">Navtej Singh Johar v. Union of India</div>
+                      <div class="col-case-citation">(2018) 10 SCC 1</div>
+                    </td>
+                    <td><span class="col-statutory">Constitutional Law</span></td>
+                    <td>
+                      <div class="col-ratio-text">Consensual private adult conduct decriminalized. Constitutional morality protects individual identity against majoritarian prejudice.</div>
+                    </td>
+                    <td>
+                      <a href="materials/landmark-judgments/navtej-johar-377-2018.pdf" class="btn-table-pdf" download title="Download Case Brief PDF">
+                        <span>📄</span> PDF
+                      </a>
+                    </td>
+                  </tr>
+                  <tr data-court="sc" data-court-type="sc" data-subject="constitutional" data-year="2017" data-keywords="puttaswamy 2017 privacy fundamental right supreme court">
+                    <td><strong>2017</strong></td>
+                    <td><span class="court-badge badge-sc">Supreme Court</span></td>
+                    <td>
+                      <div class="col-case-title">Justice K.S. Puttaswamy v. Union of India</div>
+                      <div class="col-case-citation">(2017) 10 SCC 1</div>
+                    </td>
+                    <td><span class="col-statutory">Constitutional Law</span></td>
+                    <td>
+                      <div class="col-ratio-text">Right to Privacy recognized as an inalienable fundamental right under Article 21, subject to the 3-fold proportionality test.</div>
+                    </td>
+                    <td>
+                      <a href="materials/landmark-judgments/puttaswamy-privacy-2017.pdf" class="btn-table-pdf" download title="Download Case Brief PDF">
+                        <span>📄</span> PDF
+                      </a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- ERA 4: 2014 - 2010 -->
+          <div class="legal-group-section" data-year-group="2014-2010">
+            <div class="legal-group-header">
+              <h3 class="legal-group-title">
+                <span>📅</span> 2014 – 2010: Capital Markets &amp; Criminal Procedure Safeguards
+              </h3>
+              <span class="legal-group-count">6 Landmark Decisions</span>
+            </div>
+            <div class="legal-table-responsive">
+              <table class="legal-table">
+                <thead>
+                  <tr>
+                    <th style="width: 10%;">Year</th>
+                    <th style="width: 14%;">Court / State</th>
+                    <th style="width: 26%;">Case Title &amp; Citation</th>
+                    <th style="width: 14%;">Subject Area</th>
+                    <th style="width: 26%;">Ratio Decidendi &amp; Key Holding</th>
+                    <th style="width: 10%;">Brief</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr data-court="sc" data-court-type="sc" data-subject="criminal" data-year="2014" data-keywords="lalita kumari 2014 fir mandatory registration supreme court">
+                    <td><strong>2014</strong></td>
+                    <td><span class="court-badge badge-sc">Supreme Court</span></td>
+                    <td>
+                      <div class="col-case-title">Lalita Kumari v. Govt. of U.P.</div>
+                      <div class="col-case-citation">(2014) 2 SCC 1</div>
+                    </td>
+                    <td><span class="col-statutory">Criminal Procedure</span></td>
+                    <td>
+                      <div class="col-ratio-text">Mandatory registration of FIR under Section 154 CrPC (Sec 173 BNSS) when cognizable offense is disclosed.</div>
+                    </td>
+                    <td>
+                      <a href="materials/landmark-judgments/lalita-kumari-fir-2014.pdf" class="btn-table-pdf" download title="Download Case Brief PDF">
+                        <span>📄</span> PDF
+                      </a>
+                    </td>
+                  </tr>
+                  <tr data-court="sc" data-court-type="sc" data-subject="criminal" data-year="2014" data-keywords="arnesh kumar 2014 arrest notice 41a supreme court">
+                    <td><strong>2014</strong></td>
+                    <td><span class="court-badge badge-sc">Supreme Court</span></td>
+                    <td>
+                      <div class="col-case-title">Arnesh Kumar v. State of Bihar</div>
+                      <div class="col-case-citation">(2014) 8 SCC 273</div>
+                    </td>
+                    <td><span class="col-statutory">Criminal Procedure</span></td>
+                    <td>
+                      <div class="col-ratio-text">Prohibits mechanical arrest for offences punishable up to 7 years without prior notice of appearance and recorded checklist.</div>
+                    </td>
+                    <td>
+                      <a href="materials/landmark-judgments/arnesh-kumar-arrest-2014.pdf" class="btn-table-pdf" download title="Download Case Brief PDF">
+                        <span>📄</span> PDF
+                      </a>
+                    </td>
+                  </tr>
+                  <tr data-court="hc-gujarat" data-court-type="hc" data-subject="corporate" data-year="2013" data-keywords="cadila healthcare 2013 gujarat high court commercial expediency">
+                    <td><strong>2013</strong></td>
+                    <td><span class="court-badge badge-hc badge-hc-gujarat">Gujarat HC</span></td>
+                    <td>
+                      <div class="col-case-title">Cadila Healthcare Ltd. v. CIT</div>
+                      <div class="col-case-citation">2013 SCC OnLine Guj 3822</div>
+                    </td>
+                    <td><span class="col-statutory">Corporate Law / Tax</span></td>
+                    <td>
+                      <div class="col-ratio-text">Commercial expediency is tested from the businessman’s perspective; revenue cannot dictate corporate business wisdom.</div>
+                    </td>
+                    <td>
+                      <a href="materials/landmark-judgments/gujarat-hc-cadila-healthcare-2013.pdf" class="btn-table-pdf" download title="Download Case Brief PDF">
+                        <span>📄</span> PDF
+                      </a>
+                    </td>
+                  </tr>
+                  <tr data-court="sc" data-court-type="sc" data-subject="corporate" data-year="2012" data-keywords="sahara 2012 sebi ofcd public issue supreme court">
+                    <td><strong>2012</strong></td>
+                    <td><span class="court-badge badge-sc">Supreme Court</span></td>
+                    <td>
+                      <div class="col-case-title">Sahara India Real Estate Corp v. SEBI</div>
+                      <div class="col-case-citation">(2013) 1 SCC 1</div>
+                    </td>
+                    <td><span class="col-statutory">Securities &amp; SEBI</span></td>
+                    <td>
+                      <div class="col-ratio-text">Offer of securities to 50+ persons is a deemed public issue falling under SEBI disclosure and regulatory jurisdiction.</div>
+                    </td>
+                    <td>
+                      <a href="materials/landmark-judgments/sahara-sebi-2012.pdf" class="btn-table-pdf" download title="Download Case Brief PDF">
+                        <span>📄</span> PDF
+                      </a>
+                    </td>
+                  </tr>
+                  <tr data-court="sc" data-court-type="sc" data-subject="corporate" data-year="2012" data-keywords="vodafone 2012 tax offshore look at supreme court">
+                    <td><strong>2012</strong></td>
+                    <td><span class="court-badge badge-sc">Supreme Court</span></td>
+                    <td>
+                      <div class="col-case-title">Vodafone International Holdings v. Union of India</div>
+                      <div class="col-case-citation">(2012) 6 SCC 613</div>
+                    </td>
+                    <td><span class="col-statutory">Corporate Law</span></td>
+                    <td>
+                      <div class="col-ratio-text">Look-At doctrine governs holding companies; bona fide multinational transactions cannot be artificially recharacterized.</div>
+                    </td>
+                    <td>
+                      <a href="materials/landmark-judgments/vodafone-tax-look-at-2012.pdf" class="btn-table-pdf" download title="Download Case Brief PDF">
+                        <span>📄</span> PDF
+                      </a>
+                    </td>
+                  </tr>
+                  <tr data-court="hc-delhi" data-court-type="hc" data-subject="contracts" data-year="2010" data-keywords="simplex concrete 2010 delhi high court contract exclusion clause">
+                    <td><strong>2010</strong></td>
+                    <td><span class="court-badge badge-hc badge-hc-delhi">Delhi HC</span></td>
+                    <td>
+                      <div class="col-case-title">Simplex Concrete Piles v. Union of India</div>
+                      <div class="col-case-citation">2010 SCC OnLine Del 821</div>
+                    </td>
+                    <td><span class="col-statutory">Commercial Contracts</span></td>
+                    <td>
+                      <div class="col-ratio-text">One-sided clauses extinguishing a contractor’s right to claim delay damages violate Section 23 public policy.</div>
+                    </td>
+                    <td>
+                      <a href="materials/landmark-judgments/delhi-hc-simplex-concrete-2010.pdf" class="btn-table-pdf" download title="Download Case Brief PDF">
+                        <span>📄</span> PDF
+                      </a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- ERA 5: HISTORIC FOUNDATIONAL -->
+          <div class="legal-group-section" data-year-group="pre-2010">
+            <div class="legal-group-header">
+              <h3 class="legal-group-title">
+                <span>🏛️</span> Foundational Precedents (Pre-2010 Epoch)
+              </h3>
+              <span class="legal-group-count">6 Landmark Decisions</span>
+            </div>
+            <div class="legal-table-responsive">
+              <table class="legal-table">
+                <thead>
+                  <tr>
+                    <th style="width: 10%;">Year</th>
+                    <th style="width: 14%;">Court / State</th>
+                    <th style="width: 26%;">Case Title &amp; Citation</th>
+                    <th style="width: 14%;">Subject Area</th>
+                    <th style="width: 26%;">Ratio Decidendi &amp; Key Holding</th>
+                    <th style="width: 10%;">Brief</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr data-court="hc-delhi" data-court-type="hc" data-subject="constitutional" data-year="2009" data-keywords="naz foundation 2009 delhi high court constitutional morality">
+                    <td><strong>2009</strong></td>
+                    <td><span class="court-badge badge-hc badge-hc-delhi">Delhi HC</span></td>
+                    <td>
+                      <div class="col-case-title">Naz Foundation v. Govt. of NCT of Delhi</div>
+                      <div class="col-case-citation">2009 SCC OnLine Del 1662</div>
+                    </td>
+                    <td><span class="col-statutory">Constitutional Law</span></td>
+                    <td>
+                      <div class="col-ratio-text">Pioneering recognition of constitutional morality and personal dignity against state criminalization of private conduct.</div>
+                    </td>
+                    <td>
+                      <a href="materials/landmark-judgments/delhi-hc-naz-foundation-2009.pdf" class="btn-table-pdf" download title="Download Case Brief PDF">
+                        <span>📄</span> PDF
+                      </a>
+                    </td>
+                  </tr>
+                  <tr data-court="sc" data-court-type="sc" data-subject="criminal" data-year="1997" data-keywords="dk basu 1997 arrest custodial violence supreme court">
+                    <td><strong>1997</strong></td>
+                    <td><span class="court-badge badge-sc">Supreme Court</span></td>
+                    <td>
+                      <div class="col-case-title">D.K. Basu v. State of West Bengal</div>
+                      <div class="col-case-citation">(1997) 1 SCC 416</div>
+                    </td>
+                    <td><span class="col-statutory">Criminal Procedure</span></td>
+                    <td>
+                      <div class="col-ratio-text">Mandated Arrest Memos, relative notification, and medical checkups to eradicate custodial violence.</div>
+                    </td>
+                    <td>
+                      <a href="materials/landmark-judgments/dk-basu-arrest-guidelines-1997.pdf" class="btn-table-pdf" download title="Download Case Brief PDF">
+                        <span>📄</span> PDF
+                      </a>
+                    </td>
+                  </tr>
+                  <tr data-court="hc-bombay" data-court-type="hc" data-subject="corporate" data-year="1996" data-keywords="miheer mafatlal 1996 bombay high court corporate scheme merger">
+                    <td><strong>1996</strong></td>
+                    <td><span class="court-badge badge-hc badge-hc-bombay">Bombay HC</span></td>
+                    <td>
+                      <div class="col-case-title">Miheer H. Mafatlal v. Mafatlal Industries</div>
+                      <div class="col-case-citation">(1997) 1 SCC 579</div>
+                    </td>
+                    <td><span class="col-statutory">Corporate Schemes</span></td>
+                    <td>
+                      <div class="col-ratio-text">Court exercises supervisory fairness review in corporate schemes, respecting shareholder commercial wisdom.</div>
+                    </td>
+                    <td>
+                      <a href="materials/landmark-judgments/bombay-hc-miheer-mafatlal-1996.pdf" class="btn-table-pdf" download title="Download Case Brief PDF">
+                        <span>📄</span> PDF
+                      </a>
+                    </td>
+                  </tr>
+                  <tr data-court="sc" data-court-type="sc" data-subject="constitutional" data-year="1978" data-keywords="maneka gandhi 1978 golden triangle procedure established by law supreme court">
+                    <td><strong>1978</strong></td>
+                    <td><span class="court-badge badge-sc">Supreme Court</span></td>
+                    <td>
+                      <div class="col-case-title">Maneka Gandhi v. Union of India</div>
+                      <div class="col-case-citation">(1978) 1 SCC 248</div>
+                    </td>
+                    <td><span class="col-statutory">Constitutional Law</span></td>
+                    <td>
+                      <div class="col-ratio-text">Procedure depriving liberty under Art 21 must be just, fair and reasonable; Part III forms an interrelated Golden Triangle.</div>
+                    </td>
+                    <td>
+                      <a href="materials/landmark-judgments/maneka-gandhi-art21-1978.pdf" class="btn-table-pdf" download title="Download Case Brief PDF">
+                        <span>📄</span> PDF
+                      </a>
+                    </td>
+                  </tr>
+                  <tr data-court="sc" data-court-type="sc" data-subject="constitutional" data-year="1973" data-keywords="kesavananda bharati 1973 basic structure supreme court">
+                    <td><strong>1973</strong></td>
+                    <td><span class="court-badge badge-sc">Supreme Court</span></td>
+                    <td>
+                      <div class="col-case-title">Kesavananda Bharati v. State of Kerala</div>
+                      <div class="col-case-citation">(1973) 4 SCC 225</div>
+                    </td>
+                    <td><span class="col-statutory">Constitutional Law</span></td>
+                    <td>
+                      <div class="col-ratio-text">Formulated the Basic Structure doctrine limiting constituent power of Parliament to amend the Constitution.</div>
+                    </td>
+                    <td>
+                      <a href="materials/landmark-judgments/kesavananda-bharati-1973.pdf" class="btn-table-pdf" download title="Download Case Brief PDF">
+                        <span>📄</span> PDF
+                      </a>
+                    </td>
+                  </tr>
+                  <tr data-court="sc" data-court-type="sc" data-subject="contracts" data-year="1954" data-keywords="satyabrata ghose 1954 frustration contract act supreme court">
+                    <td><strong>1954</strong></td>
+                    <td><span class="court-badge badge-sc">Supreme Court</span></td>
+                    <td>
+                      <div class="col-case-title">Satyabrata Ghose v. Mugneeram Bangur &amp; Co.</div>
+                      <div class="col-case-citation">1954 SCR 310</div>
+                    </td>
+                    <td><span class="col-statutory">Law of Contracts</span></td>
+                    <td>
+                      <div class="col-ratio-text">Doctrine of Frustration under Section 56 applies when an unexpected supervening event destroys the contract substratum.</div>
+                    </td>
+                    <td>
+                      <a href="materials/landmark-judgments/satyabrata-ghose-frustration-1954.pdf" class="btn-table-pdf" download title="Download Case Brief PDF">
+                        <span>📄</span> PDF
+                      </a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+      <!-- Empty Search Results State -->
+      <div id="studyEmptyState" class="study-empty-state">
+        <div class="empty-icon">🔍</div>
+        <h3 class="empty-title">No Matching Landmark Judgments Found</h3>
+        <p class="empty-desc">Try searching with a different case name, section, keyword, or select "All Subjects".</p>
+      </div>
+
+      <!-- Hub Quick Jump Navigation -->
+      <div class="subpage-cta-box">
+        <div class="subpage-cta-text">
+          <h4>Explore More Academic Resources</h4>
+          <p>Switch between comprehensive statutory study notes and cognitive memory recall tricks.</p>
+        </div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+          <a href="subject-notes.html" class="subpage-cta-btn">Subject Notes &rarr;</a>
+          <a href="recall-tricks.html" class="subpage-cta-btn">Recall Tricks &rarr;</a>
+        </div>
+      </div>
+
+      <!-- Academic Notice -->
+      <aside class="study-academic-notice">
+        <strong>⚖️ Academic &amp; Educational Notice:</strong> All landmark case summaries and ratios are curated by Advocate Manisha Gandhi under the academic initiative of <em>Law Glimpse</em> strictly for legal education and competitive examination preparation, in accordance with Rule 36 of the Bar Council of India Rules.
+      </aside>
+
+    </div>
+  </main>
+<!-- ========================================================
+       FOOTER
+  ======================================================== -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-left">
+        <span class="footer-logo">Advocate Manisha Gandhi</span>
+        <span class="footer-tagline">Advocate · Bar Council of Gujarat (Enrol. No. G/1023/2024) · Co-Founder, Law Glimpse</span>
+      </div>
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <a href="index.html#home">Home</a>
+        <a href="index.html#about">About</a>
+        <a href="index.html#services">Practice Areas</a>
+        <a href="study.html">Study Hub</a>
+        <!-- Uncomment when ready:
+        <a href="research.html">Research</a>
+        <a href="publications.html">Publications</a>
+        <a href="blog.html">Blog</a>
+        -->
+        <a href="index.html#contact">Contact</a>
+      </nav>
+      <div class="footer-right">
+        <p>&copy; <span class="footer-year"></span> Advocate Manisha Gandhi. All rights reserved. | <button class="bci-disclaimer-trigger">BCI Compliance Notice</button></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="study-data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

@@ -73,16 +73,18 @@ The portal features a bespoke **Editorial Legal Aesthetic** with a full **Light 
     - Strictly defaults to **Light Theme** for initial visits.
     - Theme toggle button seamlessly integrated at the end of the navbar, directly beside "Legal Query".
     - High-contrast, WCAG-compliant footer text in both themes.
-11. **Law Glimpse Legal Study Hub & Memory Recall Aids (`study.html`):**
-    - **Multi-Dimensional Landmark Judgments System**:
-      - **📑 Subject-Wise Legal Reference Table**: Categorized across Constitutional Law, Corporate & SEBI, Criminal Law & BNSS, Commercial Contracts, and Arbitration & ADR — segregated into **Supreme Court of India (Apex Precedents)** and **State High Courts (State-Wise Jurisprudence)** including Gujarat High Court, Bombay High Court, and Delhi High Court.
-      - **📅 Year-Wise Chronological Table**: Structured across evolutionary epochs (2024–2023, 2022–2020, 2019–2015, 2014–2010, and Foundational Precedents pre-2010), displaying forum, subject, key holding, and PDF brief.
-      - **🃏 Card View**: Visual card layout with core ratio decidendi callout boxes and bulleted takeaways.
-      - **Court Scope Filter**: Instant filtering by *All Courts*, *Supreme Court*, *State High Courts (All)*, *Gujarat High Court*, *Bombay High Court*, and *Delhi High Court*.
-    - **Subject-Wise Statutory Notes**: Structured modules on Company Law, SEBI LODR, New Criminal Laws (BNS, BNSS, BSA 2023), Constitutional Law, and Commercial Contracts with downloadable reference PDFs.
-    - **Cognitive Recall Tricks & Mnemonics**: High-retention memory formulas for judicial exams and law students (e.g. *SAMROP* Art 19(1), *SOUP DISC* Art 19(2), *WIB* Cognizable arrest tree, *ANSR* SEBI committees, *Frustration 4-Step Test*) with visual formula boxes and downloadable reference cards.
-    - **Real-Time Search & Subject Filter**: Dynamic keyword lookup and filter pills (Constitutional, Corporate, Criminal, Contracts) across both tables and cards with instant results.
-    - **100% BCI Rule 36 Compliant**: Non-commercial scholarly education and student empowerment.
+11. **Law Glimpse Legal Study Hub & Dedicated Sub-Pages:**
+    - **Centralized Data Registry (`study-data.js`)**: Single source of truth powering dynamic card rendering, subject/epoch tables, court filters, and live search across the entire study portal.
+    - **Interactive Parent Portal (`study.html`)**:
+      - 3-Pillar spotlight navigation cards pointing to dedicated study destinations.
+      - Dynamic card views + full statutory tables with real-time court scope filter (*Supreme Court*, *Gujarat High Court*, *Bombay High Court*, *Delhi High Court*).
+      - One-click **"Copy Citation"** with live visual clipboard feedback.
+      - Deep-linking tab navigation (`#tabJudgments`, `#tabNotes`, `#tabTricks`).
+    - **Dedicated Deep-Dive Sub-Pages**:
+      - **🏛️ Landmark Judgments (`landmark-judgments.html`)**: Focus mode featuring card view (active by default with ratio callout boxes and takeaways), Subject Table, Year Table, Court scope switcher, and live keyword lookup across 23 landmark cases.
+      - **📑 Subject Notes (`subject-notes.html`)**: Dedicated module directory covering Company Law, SEBI Regulations, New Criminal Laws (BNS/BNSS/BSA), Constitutional Law, and Commercial Contracts with immediate PDF brief downloads.
+      - **🧠 Recall Tricks & Mnemonics (`recall-tricks.html`)**: High-retention cognitive formulas (*SAMROP*, *SOUP DISC*, *WIB*, *ANSR*, *Frustration 4-Step Test*) designed for judicial exams and university law students.
+    - **100% BCI Rule 36 Compliant**: Academic empowerment and non-commercial educational resource.
 
 ---
 
@@ -91,17 +93,21 @@ The portal features a bespoke **Editorial Legal Aesthetic** with a full **Light 
 ```text
 adv-manisha.github.io/
 ├── index.html                  # Main portal: Hero, Dynamic Slogans, About, Law Glimpse, Practice Areas, Query Hub
-├── study.html                  # Legal Study Hub: Landmark Judgments, Subject Notes & Recall Tricks
+├── study.html                  # Parent Study Hub: 3-Pillar Spotlight, Multi-Tab Portal & Deep Links
+├── landmark-judgments.html     # Dedicated Landmark Judgments Sub-Page (Cards, Subject Table, Year Table)
+├── subject-notes.html          # Dedicated Subject Notes Sub-Page (Company Law, SEBI, BNS/BNSS, Constitution)
+├── recall-tricks.html          # Dedicated Memory Mnemonics & Exam Formulas Sub-Page (SAMROP, SOUP DISC, WIB)
+├── study-data.js               # Centralized Legal Study Data Registry (Judgments, Notes, Tricks + Helper APIs)
 ├── research.html               # Dedicated Research Papers & Academic Drafts repository
 ├── publications.html           # Dedicated Journal & Conference Presentations repository
 ├── blog.html                   # Dedicated Legal Perspectives & Articles repository
-├── style.css                   # Design tokens, theme variables, study hub cards, responsive grid
-├── script.js                   # Theme toggle, dynamic slogans, study hub search/filtering, BCI modal
+├── style.css                   # Design tokens, theme variables, study hub cards, court badges, responsive grid
+├── script.js                   # Theme toggle, dynamic slogans, study hub engine, copy citation, BCI modal
 ├── README.md                   # Documentation & project architecture (this file)
-├── materials/                  # Downloadable academic study PDFs
-│   ├── landmark-judgments/     # Case brief PDFs (Kesavananda, Puttaswamy, Sahara, Tata, Lalita Kumari, D.K. Basu)
-│   ├── subject-notes/          # Comprehensive subject note PDFs (Company Law, SEBI, BNS/BNSS, Constitution, Contracts)
-│   └── recall-tricks/          # Visual memory aid PDFs (SAMROP, SOUP DISC, WIB tree, ANSR, Frustration test)
+├── materials/                  # Downloadable academic study PDFs (33 structured briefs)
+│   ├── landmark-judgments/     # 23 Case briefs (Supreme Court & State HCs: Gujarat, Bombay, Delhi)
+│   ├── subject-notes/          # 5 Comprehensive statutory notes (Company Law, SEBI, BNS/BNSS, etc.)
+│   └── recall-tricks/          # 5 Visual memory aid formula sheets (SAMROP, SOUP DISC, WIB tree, etc.)
 ├── law-glimpse-logo.png        # Official Law Glimpse brand logo
 ├── logo.png                    # Official brand monogram / logo
 ├── profile.png                 # Advocate portrait image
@@ -109,6 +115,81 @@ adv-manisha.github.io/
 ├── favicon-32.png              # 32x32 Favicon
 └── favicon-180.png             # Apple Touch Icon
 ```
+
+---
+
+### 💡 How to Add New Judgments, Subject Notes, or Recall Tricks
+
+The entire study suite is data-driven via `study-data.js`. You do **not** need to write or maintain complex HTML tables or card markup.
+
+#### Option A: Edit `study-data.js` Directly
+
+Simply append your new record to the corresponding array in `study-data.js`:
+
+```javascript
+// 1. Adding a new Landmark Judgment:
+STUDY_DATA.judgments.push({
+  id: "case-unique-id",
+  title: "Case Title v. Respondent Name",
+  citation: "(2025) 1 SCC 100",
+  court: "Supreme Court",            // "Supreme Court" | "High Court of Gujarat" | "High Court of Bombay" | "High Court of Delhi"
+  stateCourt: "State High Court",    // "Supreme Court" | "State High Court"
+  courtBadgeClass: "badge-sc",       // "badge-sc" | "badge-hc-gujarat" | "badge-hc-bombay" | "badge-hc-delhi"
+  year: 2025,
+  epoch: "2024–2023",                // "2024–2023" | "2022–2020" | "2019–2015" | "2014–2010" | "Foundational Precedents"
+  subject: "Constitutional Law",     // Matches filter pills: Constitutional, Corporate, Criminal, Contracts, ADR
+  bench: "5-Judge Constitution Bench",
+  ratioDecidendi: "Core legal holding and principle established by the court.",
+  takeaways: [
+    "Key takeaway point 1",
+    "Key takeaway point 2"
+  ],
+  pdfFile: "materials/landmark-judgments/case-brief-file.pdf"
+});
+
+// 2. Adding a new Subject Note:
+STUDY_DATA.notes.push({
+  id: "note-unique-id",
+  subject: "Corporate & SEBI Law",
+  title: "Title of Subject Note",
+  description: "Concise summary of the statutory framework and critical sections covered.",
+  coverage: ["Section 135", "Schedule VII", "CSR Rules 2024"],
+  pdfFile: "materials/subject-notes/your-note-file.pdf"
+});
+
+// 3. Adding a new Recall Trick / Mnemonic:
+STUDY_DATA.tricks.push({
+  id: "trick-unique-id",
+  subject: "Constitutional Law",
+  title: "Mnemonic Title",
+  formula: "ACRONYM",
+  fullForm: "Letter A = Meaning 1 | Letter B = Meaning 2",
+  explanation: "Explanation of how to apply this trick in judicial examinations.",
+  pdfFile: "materials/recall-tricks/your-trick-file.pdf"
+});
+```
+
+#### Option B: Dynamic Injection via Browser Console or Scripts
+
+You can also inject entries at runtime or through custom scripts:
+
+```javascript
+window.addLandmarkJudgment({
+  title: "X v. State of Gujarat",
+  citation: "2024 SCC OnLine Guj 120",
+  court: "High Court of Gujarat",
+  courtBadgeClass: "badge-hc-gujarat",
+  year: 2024,
+  epoch: "2024–2023",
+  subject: "Criminal Law & BNSS",
+  bench: "Division Bench",
+  ratioDecidendi: "Bail guidelines under BNSS Section 480.",
+  takeaways: ["Takeaway 1", "Takeaway 2"],
+  pdfFile: "materials/landmark-judgments/guj-hc-bail-guidelines.pdf"
+});
+```
+
+> **PDF File Rule**: Whenever you add a new entry, drop the corresponding PDF into the respective `materials/` subfolder (`materials/landmark-judgments/`, `materials/subject-notes/`, or `materials/recall-tricks/`). The website will automatically render the card, the table rows, the red/gold PDF badge, and download action.
 
 ---
 

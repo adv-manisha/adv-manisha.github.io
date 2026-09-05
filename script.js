@@ -631,7 +631,7 @@ function setFooterYear() {
 }
 
 /* ============================================================
-   12. STUDY HUB (LANDMARK JUDGMENTS, SUBJECT NOTES & RECALL TRICKS)
+   12. STUDY HUB (DYNAMIC RENDERING & DATA-DRIVEN ENGINE)
 ============================================================ */
 function initStudyHub() {
   const tabBtns = document.querySelectorAll('.study-tab-btn');
@@ -643,36 +643,53 @@ function initStudyHub() {
   const viewToggleBtns = document.querySelectorAll('.view-toggle-btn');
   const courtScopeSelect = document.getElementById('courtScopeSelect');
 
-  if (!tabBtns.length) return;
+  // If page doesn't have study elements, exit early
+  if (!tabBtns.length && !document.getElementById('viewCardsGrid') && !document.getElementById('notesCardsGrid') && !document.getElementById('tricksCardsGrid')) {
+    return;
+  }
 
   let activeFilter = 'all';
   let activeCourtScope = 'all';
 
+  // Render dynamic study data if STUDY_DATA is loaded
+  renderDynamicStudyData();
+
   // 1. Tab Switching (Judgments vs Notes vs Tricks)
-  tabBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      tabBtns.forEach(b => {
-        b.classList.remove('active');
-        b.setAttribute('aria-selected', 'false');
+  if (tabBtns.length) {
+    tabBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        tabBtns.forEach(b => {
+          b.classList.remove('active');
+          b.setAttribute('aria-selected', 'false');
+        });
+        btn.classList.add('active');
+        btn.setAttribute('aria-selected', 'true');
+
+        const targetId = btn.getAttribute('data-tab');
+        panels.forEach(p => {
+          p.classList.remove('active');
+        });
+
+        const targetPanel = document.getElementById(targetId);
+        if (targetPanel) {
+          targetPanel.classList.add('active');
+        }
+
+        applyFilterAndSearch();
       });
-      btn.classList.add('active');
-      btn.setAttribute('aria-selected', 'true');
-
-      const targetId = btn.getAttribute('data-tab');
-      panels.forEach(p => {
-        p.classList.remove('active');
-      });
-
-      const targetPanel = document.getElementById(targetId);
-      if (targetPanel) {
-        targetPanel.classList.add('active');
-      }
-
-      applyFilterAndSearch();
     });
-  });
 
-  // 2. Sub-View Switching in Landmark Judgments (Subject Table vs Year Table vs Cards)
+    // Check URL hash on page load for direct tab linking (e.g. study.html#tabNotes)
+    const hash = window.location.hash;
+    if (hash && (hash === '#tabNotes' || hash === '#tabTricks' || hash === '#tabJudgments')) {
+      const matchBtn = document.querySelector(`.study-tab-btn[data-tab="${hash.substring(1)}"]`);
+      if (matchBtn) {
+        matchBtn.click();
+      }
+    }
+  }
+
+  // 2. Sub-View Switching in Landmark Judgments (Cards vs Subject Table vs Year Table)
   if (viewToggleBtns.length) {
     viewToggleBtns.forEach(btn => {
       btn.addEventListener('click', () => {
@@ -743,10 +760,182 @@ function initStudyHub() {
     });
   }
 
-  // 7. Unified Filter & Search Logic
+  // 7. Clipboard Copy Citation Handler
+  function bindCopyCitationButtons() {
+    document.querySelectorAll('.btn-copy-citation').forEach(btn => {
+      btn.onclick = function() {
+        const citation = btn.getAttribute('data-citation') || '';
+        if (!citation) return;
+
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(citation).then(handleSuccess).catch(fallbackCopy);
+        } else {
+          fallbackCopy();
+        }
+
+        function fallbackCopy() {
+          const temp = document.createElement('textarea');
+          temp.value = citation;
+          document.body.appendChild(temp);
+          temp.select();
+          try {
+            document.execCommand('copy');
+            handleSuccess();
+          } catch(e) {}
+          document.body.removeChild(temp);
+        }
+
+        function handleSuccess() {
+          const originalHTML = btn.innerHTML;
+          btn.innerHTML = '<span>✓ Copied!</span>';
+          btn.classList.add('copied');
+          setTimeout(() => {
+            btn.innerHTML = originalHTML;
+            btn.classList.remove('copied');
+          }, 2000);
+        }
+      };
+    });
+  }
+
+  // 8. Dynamic Data Rendering Engine
+  function renderDynamicStudyData() {
+    if (typeof STUDY_DATA === 'undefined') return;
+
+    // A. Render Judgments Cards Grid
+    const judgmentsGrid = document.getElementById('viewCardsGrid');
+    if (judgmentsGrid && STUDY_DATA.judgments && STUDY_DATA.judgments.length) {
+      judgmentsGrid.innerHTML = STUDY_DATA.judgments.map(item => {
+        const bulletsHtml = (item.bullets || []).map(b => `<li>${b}</li>`).join('');
+        let badgeCourtClass = 'badge-sc';
+        if (item.court === 'hc-gujarat') badgeCourtClass = 'badge-hc badge-hc-gujarat';
+        else if (item.court === 'hc-bombay') badgeCourtClass = 'badge-hc badge-hc-bombay';
+        else if (item.court === 'hc-delhi') badgeCourtClass = 'badge-hc badge-hc-delhi';
+        else if (item.courtType === 'hc') badgeCourtClass = 'badge-hc';
+
+        return `
+          <article class="judgment-card" data-court="${item.court}" data-court-type="${item.courtType}" data-subject="${item.subject}" data-keywords="${item.keywords || ''}">
+            <div class="card-top-row">
+              <span class="subject-badge">${item.subjectLabel || item.subject}</span>
+              <div style="display:flex;align-items:center;gap:6px;">
+                <span class="court-badge ${badgeCourtClass}">${item.courtLabel}</span>
+                <span class="bench-badge">${item.bench} · ${item.year}</span>
+              </div>
+            </div>
+            <h3>${item.title}</h3>
+            <div class="judgment-citation">${item.citation}</div>
+            <div class="judgment-ratio-box">
+              <span class="ratio-label">Core Ratio Decidendi</span>
+              <p class="ratio-text">"${item.ratio}"</p>
+            </div>
+            <ul class="judgment-bullets">
+              ${bulletsHtml}
+            </ul>
+            <div class="card-actions-row">
+              <a href="${item.pdfUrl}" class="btn-download-pdf" download title="Download official case brief PDF">
+                <span class="btn-download-left">
+                  <span class="pdf-badge-tag">PDF</span>
+                  <span class="pdf-icon">📄</span>
+                  <span>Download Brief</span>
+                </span>
+                <span class="pdf-size-badge">${item.pdfSize || '1.6 KB'}</span>
+              </a>
+              <button type="button" class="btn-copy-citation" data-citation="${item.citation}" title="Copy legal citation">
+                <span class="copy-icon">📋</span>
+                <span>Copy Citation</span>
+              </button>
+            </div>
+          </article>
+        `;
+      }).join('');
+    }
+
+    // B. Render Notes Cards Grid
+    const notesGrid = document.getElementById('notesCardsGrid');
+    if (notesGrid && STUDY_DATA.notes && STUDY_DATA.notes.length) {
+      notesGrid.innerHTML = STUDY_DATA.notes.map(item => {
+        const sectionsHtml = (item.sectionsCovered || []).map(s => `<li>• ${s}</li>`).join('');
+        return `
+          <article class="note-card" data-subject="${item.subject}" data-keywords="${item.keywords || ''}">
+            <div class="card-top-row">
+              <span class="subject-badge">${item.subjectLabel}</span>
+              <span class="bench-badge">${item.moduleNumber}</span>
+            </div>
+            <h3>${item.title}</h3>
+            <div class="note-subtitle">${item.subtitle}</div>
+            <p class="note-desc">${item.description}</p>
+            <div class="note-sections-wrap">
+              <div class="note-sections-title">Key Statutory Provisions Covered:</div>
+              <ul class="note-sections-list">
+                ${sectionsHtml}
+              </ul>
+            </div>
+            <div class="card-actions-row">
+              <a href="${item.pdfUrl}" class="btn-download-pdf" download title="Download statutory study note PDF">
+                <span class="btn-download-left">
+                  <span class="pdf-badge-tag">PDF</span>
+                  <span class="pdf-icon">📄</span>
+                  <span>Download Notes</span>
+                </span>
+                <span class="pdf-size-badge">${item.pdfSize}</span>
+              </a>
+            </div>
+          </article>
+        `;
+      }).join('');
+    }
+
+    // C. Render Tricks Cards Grid
+    const tricksGrid = document.getElementById('tricksCardsGrid');
+    if (tricksGrid && STUDY_DATA.tricks && STUDY_DATA.tricks.length) {
+      tricksGrid.innerHTML = STUDY_DATA.tricks.map(item => {
+        const breakdownHtml = (item.breakdown || []).map(b => `<li><strong>${b.letter}</strong> — ${b.desc}</li>`).join('');
+        return `
+          <article class="trick-card" data-subject="${item.subject}" data-keywords="${item.keywords || ''}">
+            <div class="card-top-row">
+              <span class="subject-badge">${item.subjectLabel}</span>
+              <span class="bench-badge">Memory Trick</span>
+            </div>
+            <h3>${item.title}</h3>
+            <div class="trick-formula-box">
+              <div>
+                <span class="trick-formula-label">${item.formulaLabel}</span>
+                <div class="trick-formula-text">${item.formula}</div>
+              </div>
+              <div style="font-size: 1.8rem;" aria-hidden="true">💡</div>
+            </div>
+            <ul class="trick-breakdown">
+              ${breakdownHtml}
+            </ul>
+            ${item.practicalTip ? `<div class="trick-tip-box"><strong>Practical Exam Tip:</strong> ${item.practicalTip}</div>` : ''}
+            <div class="card-actions-row" style="margin-top:16px;">
+              <a href="${item.pdfUrl}" class="btn-download-pdf" download title="Download cognitive mnemonic flashcard PDF">
+                <span class="btn-download-left">
+                  <span class="pdf-badge-tag">PDF</span>
+                  <span class="pdf-icon">📄</span>
+                  <span>Download Trick Sheet</span>
+                </span>
+                <span class="pdf-size-badge">${item.pdfSize}</span>
+              </a>
+            </div>
+          </article>
+        `;
+      }).join('');
+    }
+
+    bindCopyCitationButtons();
+  }
+
+  // Expose global refresh function so adding new data dynamically re-renders
+  window.refreshStudyHub = function() {
+    renderDynamicStudyData();
+    applyFilterAndSearch();
+  };
+
+  // 9. Unified Filter & Search Logic
   function applyFilterAndSearch() {
     const query = searchInput ? searchInput.value.trim().toLowerCase() : '';
-    const activePanel = document.querySelector('.study-tab-panel.active');
+    const activePanel = document.querySelector('.study-tab-panel.active') || document.querySelector('.study-section');
     if (!activePanel) return;
 
     let visibleCount = 0;
@@ -790,7 +979,6 @@ function initStudyHub() {
         const hasVisible = Array.from(groupRows).some(r => r.style.display !== 'none');
         group.style.display = hasVisible ? '' : 'none';
 
-        // Also check subgroups if present
         const subgroups = group.querySelectorAll('.court-subgroup');
         subgroups.forEach(sub => {
           const subRows = sub.querySelectorAll('tbody tr[data-court]');
@@ -800,7 +988,7 @@ function initStudyHub() {
       });
     }
 
-    // B. Filter Cards (in viewCards or other tab panels like Notes and Tricks)
+    // B. Filter Cards (in viewCardsGrid or note-card / trick-card)
     const cards = activePanel.querySelectorAll('.judgment-card, .note-card, .trick-card');
     cards.forEach(card => {
       const subject = card.getAttribute('data-subject') || '';
@@ -820,7 +1008,6 @@ function initStudyHub() {
 
       if (matchesFilter && matchesCourtScope && matchesSearch) {
         card.style.display = 'flex';
-        // Only increment visibleCount if viewCards is active or we are in another tab
         if (!activeMatrixView || activeMatrixView.id === 'viewCards') {
           visibleCount++;
         }
@@ -838,4 +1025,8 @@ function initStudyHub() {
       }
     }
   }
+
+  // Initial pass on load
+  applyFilterAndSearch();
 }
+
