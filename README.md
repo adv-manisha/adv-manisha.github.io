@@ -74,16 +74,36 @@ The portal features a bespoke **Editorial Legal Aesthetic** with a full **Light 
     - Theme toggle button seamlessly integrated at the end of the navbar, directly beside "Legal Query".
     - High-contrast, WCAG-compliant footer text in both themes.
 11. **Law Glimpse Legal Study Hub & Dedicated Sub-Pages:**
-    - **Centralized Data Registry (`study-data.js`)**: Single source of truth powering dynamic card rendering, subject/epoch tables, court filters, and live search across the entire study portal.
+    - **Centralized Data Registry (`study-data.js`)**: Single source of truth powering dynamic card rendering, subject/epoch tables, court filters, and live search across 57 landmark cases, 7 subject notes, and 7 recall tricks.
+    - **All Major Branches of Law Covered (Linking Laws Reference)**:
+      - 🏛️ Constitutional Law (Basic Structure, Privacy, Secularism, Reservation ceiling, Governor powers)
+      - ⚖️ Criminal Law & BNSS 2023 (Mandatory FIR, Custodial safeguards, Bail reform, Preliminary inquiry 2026)
+      - 📑 Civil Procedure (CPC) & Specific Relief (SRA) (Res Judicata Sec 11, Order 39 Injunctions, Stay orders)
+      - 📜 Law of Contracts & Commercial Obligations (Frustration Sec 56, Liquidated damages Sec 74, Formation)
+      - 🏢 Corporate Governance, SEBI & Securities Law (Oppression, Lifting corporate veil, Corporate personality)
+      - 💼 Commercial Insolvency (IBC) & Negotiable Instruments (NI Act) (Sec 138 Moratorium, Creditor rights)
+      - 🤝 Arbitration, Conciliation & ADR (Stamp Act curability, Group of Companies, Fourfold arbitrability)
+      - 👨‍👩‍👧 Family Law, Matrimonial & Succession (Triple Talaq, Coparcenary rights, Pan-India maintenance)
+      - 🏡 Transfer of Property Act (TPA) & Property Law (GPA title invalidity Sec 54, Lis Pendens Sec 52)
+      - 🌿 Environmental Law & Public Interest Litigation (PIL) (Absolute liability, Precautionary & Polluter pays)
+      - 🔍 Evidence Law, Technology & BSA 2023 (Electronic evidence Sec 63 BSA, Confession & discovery Sec 23)
+      - 🏛️ State High Court Jurisprudence (Gujarat High Court, Bombay High Court, Delhi High Court)
+    - **Prominent 2026, 2025 & 2024 Contemporary Additions**:
+      - **2026**: *AI Web Scraping & DPDP Act Framework*, *BNSS Preliminary Inquiry Sec 173(3) Harmonization*.
+      - **2025**: *Frank Vitus v. NCB (GPS location tracking bail bar)*, *Citizenship Act Sec 6A Assam Accord (5-Judge Bench)*, *Election Commission Independence (CEC Act 2023)*, *Gujarat HC GUJCTOC Section 23 Sanction*.
+      - **2024**: *ADR v. UOI (Electoral Bonds Unconstitutional)*, *MADA v. SAIL (Mineral Rights Tax 9-Judge Bench)*, *Allahabad HC Bar (Asian Resurfacing Stay Orders Overruled)*, *State of Punjab v. Governor (Article 200 Pocket Veto Bar)*, *Cox & Kings v. SAP (Group of Companies in Arbitration)*, *Bombay HC Pradeep Sharma (Circumstantial Evidence Standard)*.
+    - **"Case Glimpse on Card, Full Detail in PDF Only" Architecture**:
+      - **Card View**: Displays high-impact **⚖️ Case Glimpse** callout box (issue + ratio decidendi snapshot in 2-3 sentences), court/subject badges, and key takeaways.
+      - **PDF Briefs**: Multi-page, exhaustive legal documents with complete facts, legal issues, party arguments, in-depth ratio decidendi, final operative order, precedents, and examination/advocacy pointers.
     - **Interactive Parent Portal (`study.html`)**:
       - 3-Pillar spotlight navigation cards pointing to dedicated study destinations.
       - Dynamic card views + full statutory tables with real-time court scope filter (*Supreme Court*, *Gujarat High Court*, *Bombay High Court*, *Delhi High Court*).
       - One-click **"Copy Citation"** with live visual clipboard feedback.
-      - Deep-linking tab navigation (`#tabJudgments`, `#tabNotes`, `#tabTricks`).
+      - Deep-linking tab routing with URL history (`#tabJudgments`, `#tabNotes`, `#tabTricks`).
     - **Dedicated Deep-Dive Sub-Pages**:
-      - **🏛️ Landmark Judgments (`landmark-judgments.html`)**: Focus mode featuring card view (active by default with ratio callout boxes and takeaways), Subject Table, Year Table, Court scope switcher, and live keyword lookup across 23 landmark cases.
-      - **📑 Subject Notes (`subject-notes.html`)**: Dedicated module directory covering Company Law, SEBI Regulations, New Criminal Laws (BNS/BNSS/BSA), Constitutional Law, and Commercial Contracts with immediate PDF brief downloads.
-      - **🧠 Recall Tricks & Mnemonics (`recall-tricks.html`)**: High-retention cognitive formulas (*SAMROP*, *SOUP DISC*, *WIB*, *ANSR*, *Frustration 4-Step Test*) designed for judicial exams and university law students.
+      - **🏛️ Landmark Judgments (`landmark-judgments.html`)**: Focus mode featuring card view (active by default with Case Glimpse boxes), Subject Table, Year Table (with `2026–2025` and `2024–2023` epochs), Court scope switcher, and live keyword lookup.
+      - **📑 Subject Notes (`subject-notes.html`)**: Modules on Company Law, SEBI LODR, BNSS/BNS/BSA, Constitution, Contracts, CPC, and Arbitration with immediate PDF downloads.
+      - **🧠 Recall Tricks & Mnemonics (`recall-tricks.html`)**: Formulas (*SAMROP*, *SOUP DISC*, *WIB*, *ANSR*, *4-Step Frustration*, *PANCHSHEEL*, *BE-SAFE Bail Matrix*) for judicial exams and university law students.
     - **100% BCI Rule 36 Compliant**: Academic empowerment and non-commercial educational resource.
 
 ---
@@ -95,19 +115,19 @@ adv-manisha.github.io/
 ├── index.html                  # Main portal: Hero, Dynamic Slogans, About, Law Glimpse, Practice Areas, Query Hub
 ├── study.html                  # Parent Study Hub: 3-Pillar Spotlight, Multi-Tab Portal & Deep Links
 ├── landmark-judgments.html     # Dedicated Landmark Judgments Sub-Page (Cards, Subject Table, Year Table)
-├── subject-notes.html          # Dedicated Subject Notes Sub-Page (Company Law, SEBI, BNS/BNSS, Constitution)
-├── recall-tricks.html          # Dedicated Memory Mnemonics & Exam Formulas Sub-Page (SAMROP, SOUP DISC, WIB)
-├── study-data.js               # Centralized Legal Study Data Registry (Judgments, Notes, Tricks + Helper APIs)
+├── subject-notes.html          # Dedicated Subject Notes Sub-Page (Company Law, SEBI, BNS/BNSS, Constitution, CPC)
+├── recall-tricks.html          # Dedicated Memory Mnemonics & Exam Formulas Sub-Page (SAMROP, SOUP DISC, WIB, PANCHSHEEL)
+├── study-data.js               # Centralized Legal Study Data Registry (57 Judgments, 7 Notes, 7 Tricks + Helper APIs)
 ├── research.html               # Dedicated Research Papers & Academic Drafts repository
 ├── publications.html           # Dedicated Journal & Conference Presentations repository
 ├── blog.html                   # Dedicated Legal Perspectives & Articles repository
-├── style.css                   # Design tokens, theme variables, study hub cards, court badges, responsive grid
+├── style.css                   # Design tokens, theme variables, Case Glimpse cards, court badges, responsive grid
 ├── script.js                   # Theme toggle, dynamic slogans, study hub engine, copy citation, BCI modal
 ├── README.md                   # Documentation & project architecture (this file)
-├── materials/                  # Downloadable academic study PDFs (33 structured briefs)
-│   ├── landmark-judgments/     # 23 Case briefs (Supreme Court & State HCs: Gujarat, Bombay, Delhi)
-│   ├── subject-notes/          # 5 Comprehensive statutory notes (Company Law, SEBI, BNS/BNSS, etc.)
-│   └── recall-tricks/          # 5 Visual memory aid formula sheets (SAMROP, SOUP DISC, WIB tree, etc.)
+├── materials/                  # Downloadable academic study PDFs (71 structured briefs)
+│   ├── landmark-judgments/     # 57 Multi-page case briefs (2026, 2025, 2024 & foundational precedents)
+│   ├── subject-notes/          # 7 Comprehensive statutory notes (Company Law, SEBI, BNS/BNSS, CPC, etc.)
+│   └── recall-tricks/          # 7 Visual memory aid formula sheets (SAMROP, SOUP DISC, WIB, PANCHSHEEL, etc.)
 ├── law-glimpse-logo.png        # Official Law Glimpse brand logo
 ├── logo.png                    # Official brand monogram / logo
 ├── profile.png                 # Advocate portrait image

@@ -3340,6 +3340,80 @@ html[data-theme="dark"] .subpage-cta-btn {
   }
 }
 
+/* ========================================================
+   23. CASE GLIMPSE CARD ENHANCEMENT & MULTI-SUBJECT BADGES
+   ======================================================== */
+.judgment-ratio-box {
+  background: var(--bg-secondary);
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  border-left: 4px solid var(--gold);
+  padding: 14px 18px;
+  border-radius: 4px;
+  margin-bottom: 16px;
+  position: relative;
+}
 
+.case-glimpse-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+  gap: 6px;
+}
 
- 
+.case-glimpse-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.68rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  background: var(--gold);
+  color: #111111;
+  padding: 2px 8px;
+  border-radius: 3px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.ratio-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--gold);
+  margin: 0;
+}
+
+/* Multi-Subject Badges */
+.subject-badge {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 3px 9px;
+  border-radius: 3px;
+  background: rgba(14, 28, 54, 0.08);
+  color: var(--title-color);
+  border: 1px solid var(--border-color);
+}
+
+html[data-theme="dark"] .subject-badge {
+  background: rgba(255, 255, 255, 0.06);
+  color: #d1d5db;
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.subject-badge[data-subject="constitutional"] { border-left: 3px solid #3b82f6; }
+.subject-badge[data-subject="criminal"] { border-left: 3px solid #ef4444; }
+.subject-badge[data-subject="cpc-sra"] { border-left: 3px solid #8b5cf6; }
+.subject-badge[data-subject="contracts"] { border-left: 3px solid #10b981; }
+.subject-badge[data-subject="corporate-sebi"] { border-left: 3px solid #f59e0b; }
+.subject-badge[data-subject="ibc-commercial"] { border-left: 3px solid #06b6d4; }
+.subject-badge[data-subject="arbitration"] { border-left: 3px solid #6366f1; }
+.subject-badge[data-subject="family"] { border-left: 3px solid #ec4899; }
+.subject-badge[data-subject="property-tpa"] { border-left: 3px solid #14b8a6; }
+.subject-badge[data-subject="environmental"] { border-left: 3px solid #22c55e; }
+.subject-badge[data-subject="evidence-bsa"] { border-left: 3px solid #eab308; }

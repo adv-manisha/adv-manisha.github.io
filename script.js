@@ -675,18 +675,27 @@ function initStudyHub() {
           targetPanel.classList.add('active');
         }
 
+        if (history.replaceState) {
+          history.replaceState(null, null, '#' + targetId);
+        }
+
         applyFilterAndSearch();
       });
     });
 
     // Check URL hash on page load for direct tab linking (e.g. study.html#tabNotes)
-    const hash = window.location.hash;
-    if (hash && (hash === '#tabNotes' || hash === '#tabTricks' || hash === '#tabJudgments')) {
-      const matchBtn = document.querySelector(`.study-tab-btn[data-tab="${hash.substring(1)}"]`);
-      if (matchBtn) {
-        matchBtn.click();
+    function activateTabFromHash() {
+      const hash = window.location.hash;
+      if (hash && (hash === '#tabNotes' || hash === '#tabTricks' || hash === '#tabJudgments')) {
+        const matchBtn = document.querySelector(`.study-tab-btn[data-tab="${hash.substring(1)}"]`);
+        if (matchBtn && !matchBtn.classList.contains('active')) {
+          matchBtn.click();
+        }
       }
     }
+
+    activateTabFromHash();
+    window.addEventListener('hashchange', activateTabFromHash);
   }
 
   // 2. Sub-View Switching in Landmark Judgments (Cards vs Subject Table vs Year Table)
@@ -806,39 +815,42 @@ function initStudyHub() {
     const judgmentsGrid = document.getElementById('viewCardsGrid');
     if (judgmentsGrid && STUDY_DATA.judgments && STUDY_DATA.judgments.length) {
       judgmentsGrid.innerHTML = STUDY_DATA.judgments.map(item => {
-        const bulletsHtml = (item.bullets || []).map(b => `<li>${b}</li>`).join('');
-        let badgeCourtClass = 'badge-sc';
+        const bulletsHtml = (item.takeaways || item.bullets || []).map(b => `<li>${b}</li>`).join('');
+        let badgeCourtClass = item.courtBadgeClass || 'badge-sc';
         if (item.court === 'hc-gujarat') badgeCourtClass = 'badge-hc badge-hc-gujarat';
         else if (item.court === 'hc-bombay') badgeCourtClass = 'badge-hc badge-hc-bombay';
         else if (item.court === 'hc-delhi') badgeCourtClass = 'badge-hc badge-hc-delhi';
         else if (item.courtType === 'hc') badgeCourtClass = 'badge-hc';
 
         return `
-          <article class="judgment-card" data-court="${item.court}" data-court-type="${item.courtType}" data-subject="${item.subject}" data-keywords="${item.keywords || ''}">
+          <article class="judgment-card" data-court="${item.court}" data-court-type="${item.courtType}" data-subject="${item.subject}" data-year="${item.year}" data-keywords="${item.keywords || ''}">
             <div class="card-top-row">
-              <span class="subject-badge">${item.subjectLabel || item.subject}</span>
+              <span class="subject-badge" data-subject="${item.subject}">${item.subjectLabel || item.subject}</span>
               <div style="display:flex;align-items:center;gap:6px;">
                 <span class="court-badge ${badgeCourtClass}">${item.courtLabel}</span>
-                <span class="bench-badge">${item.bench} · ${item.year}</span>
+                <span class="bench-badge">${item.bench ? item.bench.split('(')[0].trim() : ''} · ${item.year}</span>
               </div>
             </div>
             <h3>${item.title}</h3>
             <div class="judgment-citation">${item.citation}</div>
             <div class="judgment-ratio-box">
-              <span class="ratio-label">Core Ratio Decidendi</span>
-              <p class="ratio-text">"${item.ratio}"</p>
+              <div class="case-glimpse-header">
+                <span class="case-glimpse-badge"><span class="glimpse-icon">⚖️</span> Case Glimpse</span>
+                <span class="ratio-label">Core Ratio Decidendi</span>
+              </div>
+              <p class="ratio-text">"${item.caseGlimpse || item.ratio}"</p>
             </div>
             <ul class="judgment-bullets">
               ${bulletsHtml}
             </ul>
             <div class="card-actions-row">
-              <a href="${item.pdfUrl}" class="btn-download-pdf" download title="Download official case brief PDF">
+              <a href="${item.pdfUrl}" class="btn-download-pdf" download title="Download full detail case brief PDF">
                 <span class="btn-download-left">
                   <span class="pdf-badge-tag">PDF</span>
                   <span class="pdf-icon">📄</span>
-                  <span>Download Brief</span>
+                  <span>Full Detail Brief (PDF)</span>
                 </span>
-                <span class="pdf-size-badge">${item.pdfSize || '1.6 KB'}</span>
+                <span class="pdf-size-badge">${item.pdfSize || 'Detailed Brief'}</span>
               </a>
               <button type="button" class="btn-copy-citation" data-citation="${item.citation}" title="Copy legal citation">
                 <span class="copy-icon">📋</span>
@@ -850,7 +862,169 @@ function initStudyHub() {
       }).join('');
     }
 
-    // B. Render Notes Cards Grid
+    // B. Render Dynamic Year-Wise Table
+    const yearTableContainer = document.getElementById('viewYearTable');
+    if (yearTableContainer && STUDY_DATA.judgments && STUDY_DATA.judgments.length) {
+      const epochMeta = [
+        { id: "2026–2025", title: "📅 2026 – 2025: Contemporary Precedents (AI, Data Privacy, BNSS & Liberty)" },
+        { id: "2024–2023", title: "📅 2024 – 2023: Landmark Constitutional, Federal & Arbitration Epoch" },
+        { id: "2022–2020", title: "📅 2022 – 2020: Reform, Corporate & Bail Jurisprudence" },
+        { id: "2019–2015", title: "📅 2019 – 2015: Commercial Insolvency, Privacy & Fundamental Dignity" },
+        { id: "2014–2010", title: "📅 2014 – 2010: Procedural Safeguards, Investor Protection & Property Certainty" },
+        { id: "Foundational Precedents", title: "📅 Foundational Precedents (Pre-2010): Apex Constitutional, Criminal & Commercial Bedrocks" }
+      ];
+
+      let yearHtml = '<div class="table-scroll-hint">← Scroll horizontally on small screens to inspect the full legal matrix →</div>';
+      epochMeta.forEach(ep => {
+        const epCases = STUDY_DATA.judgments.filter(j => j.epoch === ep.id);
+        if (!epCases.length) return;
+
+        const rowsHtml = epCases.map(j => `
+          <tr data-court="${j.court}" data-court-type="${j.courtType}" data-subject="${j.subject}" data-year="${j.year}" data-keywords="${j.keywords || ''}">
+            <td><strong>${j.year}</strong></td>
+            <td><span class="court-badge ${j.courtBadgeClass || 'badge-sc'}">${j.courtLabel}</span></td>
+            <td>
+              <div class="col-case-title">${j.title}</div>
+              <div class="col-case-citation">${j.citation}</div>
+            </td>
+            <td><span class="col-statutory">${j.subjectLabel}</span></td>
+            <td>
+              <div class="col-ratio-text">${j.caseGlimpse || j.ratio}</div>
+            </td>
+            <td>
+              <a href="${j.pdfUrl}" class="btn-table-pdf" download title="Download Full Detail Case Brief PDF">
+                <span>📄</span> PDF
+              </a>
+            </td>
+          </tr>
+        `).join('');
+
+        yearHtml += `
+          <div class="legal-group-section" data-year-group="${ep.id}">
+            <div class="legal-group-header">
+              <h3 class="legal-group-title">${ep.title}</h3>
+              <span class="legal-group-count">${epCases.length} Landmark Decisions</span>
+            </div>
+            <div class="legal-table-responsive">
+              <table class="legal-table">
+                <thead>
+                  <tr>
+                    <th style="width: 8%;">Year</th>
+                    <th style="width: 14%;">Court / Forum</th>
+                    <th style="width: 26%;">Case Title &amp; Citation</th>
+                    <th style="width: 14%;">Subject Area</th>
+                    <th style="width: 28%;">Ratio Decidendi &amp; Key Holding</th>
+                    <th style="width: 10%;">Brief</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  ${rowsHtml}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        `;
+      });
+      yearTableContainer.innerHTML = yearHtml;
+    }
+
+    // C. Render Dynamic Subject-Wise Table
+    const subjectTableContainer = document.getElementById('viewSubjectTable');
+    if (subjectTableContainer && STUDY_DATA.judgments && STUDY_DATA.judgments.length) {
+      const subjectMeta = [
+        { id: "constitutional", title: "🏛️ Constitutional Law & Fundamental Rights" },
+        { id: "criminal", title: "⚖️ Criminal Law, Procedure & New Criminal Sanhitas (BNSS/BNS)" },
+        { id: "cpc-sra", title: "📑 Civil Procedure (CPC) & Specific Relief (SRA)" },
+        { id: "contracts", title: "📜 Law of Contracts & Commercial Obligations" },
+        { id: "corporate-sebi", title: "🏢 Corporate Governance, SEBI & Securities Law" },
+        { id: "ibc-commercial", title: "💼 Commercial Insolvency (IBC) & Negotiable Instruments (NI Act)" },
+        { id: "arbitration", title: "🤝 Arbitration, Conciliation & ADR" },
+        { id: "family", title: "👨‍👩‍👧 Family Law, Matrimonial & Succession" },
+        { id: "property-tpa", title: "🏡 Transfer of Property Act (TPA) & Property Law" },
+        { id: "environmental", title: "🌿 Environmental Law & Public Interest Litigation (PIL)" },
+        { id: "evidence-bsa", title: "🔍 Evidence Law, Technology & BSA 2023" }
+      ];
+
+      let subjHtml = '<div class="table-scroll-hint">← Scroll horizontally on small screens to inspect the full legal matrix →</div>';
+      subjectMeta.forEach(sm => {
+        const smCases = STUDY_DATA.judgments.filter(j => j.subject === sm.id);
+        if (!smCases.length) return;
+
+        const scCases = smCases.filter(j => j.courtType === 'sc');
+        const hcCases = smCases.filter(j => j.courtType === 'hc');
+
+        let subSectionsHtml = '';
+
+        function renderSubgroup(cases, label, badgeClass) {
+          if (!cases.length) return '';
+          const rows = cases.map(j => `
+            <tr data-court="${j.court}" data-court-type="${j.courtType}" data-subject="${j.subject}" data-year="${j.year}" data-keywords="${j.keywords || ''}">
+              <td>
+                <div class="col-case-title">${j.title}</div>
+                <div class="col-case-citation">${j.citation}</div>
+              </td>
+              <td>
+                <div>${j.year}</div>
+                <div class="col-case-bench">${j.bench ? j.bench.split('(')[0].trim() : ''}</div>
+              </td>
+              <td><span class="court-badge ${j.courtBadgeClass || 'badge-sc'}">${j.courtLabel}</span></td>
+              <td><span class="col-statutory">${j.statutory || 'N/A'}</span></td>
+              <td>
+                <div class="col-ratio-text">${j.ratio}</div>
+                <div class="col-ratio-takeaway">${j.takeaways && j.takeaways.length ? j.takeaways[0] : ''}</div>
+              </td>
+              <td>
+                <a href="${j.pdfUrl}" class="btn-table-pdf" download title="Download Full Detail Case Brief PDF">
+                  <span>📄</span> PDF
+                </a>
+              </td>
+            </tr>
+          `).join('');
+
+          return `
+            <div class="court-subgroup" data-court-subgroup="${cases[0].courtType}">
+              <div class="court-subgroup-title">
+                <span class="court-badge ${badgeClass}">${label}</span>
+                <span>(${cases.length} Landmark Decisions)</span>
+              </div>
+              <div class="legal-table-responsive">
+                <table class="legal-table">
+                  <thead>
+                    <tr>
+                      <th style="width: 24%;">Case Title &amp; Citation</th>
+                      <th style="width: 12%;">Year &amp; Bench</th>
+                      <th style="width: 12%;">Forum</th>
+                      <th style="width: 14%;">Statutory Focus</th>
+                      <th style="width: 28%;">Ratio Decidendi &amp; Key Holding</th>
+                      <th style="width: 10%;">Brief</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    ${rows}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          `;
+        }
+
+        if (scCases.length) subSectionsHtml += renderSubgroup(scCases, 'Supreme Court of India', 'badge-sc');
+        if (hcCases.length) subSectionsHtml += renderSubgroup(hcCases, 'State High Courts', 'badge-hc');
+
+        subjHtml += `
+          <div class="legal-group-section" data-subject="${sm.id}">
+            <div class="legal-group-header">
+              <h3 class="legal-group-title">${sm.title}</h3>
+              <span class="legal-group-count">${smCases.length} Landmark Decisions</span>
+            </div>
+            ${subSectionsHtml}
+          </div>
+        `;
+      });
+      subjectTableContainer.innerHTML = subjHtml;
+    }
+
+    // D. Render Notes Cards Grid
     const notesGrid = document.getElementById('notesCardsGrid');
     if (notesGrid && STUDY_DATA.notes && STUDY_DATA.notes.length) {
       notesGrid.innerHTML = STUDY_DATA.notes.map(item => {
@@ -858,12 +1032,11 @@ function initStudyHub() {
         return `
           <article class="note-card" data-subject="${item.subject}" data-keywords="${item.keywords || ''}">
             <div class="card-top-row">
-              <span class="subject-badge">${item.subjectLabel}</span>
-              <span class="bench-badge">${item.moduleNumber}</span>
+              <span class="subject-badge" data-subject="${item.subject}">${item.subjectLabel}</span>
+              <span class="bench-badge">Study Module</span>
             </div>
             <h3>${item.title}</h3>
-            <div class="note-subtitle">${item.subtitle}</div>
-            <p class="note-desc">${item.description}</p>
+            <p class="note-desc">${item.desc || item.description || ''}</p>
             <div class="note-sections-wrap">
               <div class="note-sections-title">Key Statutory Provisions Covered:</div>
               <ul class="note-sections-list">
@@ -875,9 +1048,9 @@ function initStudyHub() {
                 <span class="btn-download-left">
                   <span class="pdf-badge-tag">PDF</span>
                   <span class="pdf-icon">📄</span>
-                  <span>Download Notes</span>
+                  <span>Full Detail Notes (PDF)</span>
                 </span>
-                <span class="pdf-size-badge">${item.pdfSize}</span>
+                <span class="pdf-size-badge">${item.pdfSize || 'Study Brief'}</span>
               </a>
             </div>
           </article>
@@ -885,7 +1058,7 @@ function initStudyHub() {
       }).join('');
     }
 
-    // C. Render Tricks Cards Grid
+    // E. Render Tricks Cards Grid
     const tricksGrid = document.getElementById('tricksCardsGrid');
     if (tricksGrid && STUDY_DATA.tricks && STUDY_DATA.tricks.length) {
       tricksGrid.innerHTML = STUDY_DATA.tricks.map(item => {
@@ -893,13 +1066,13 @@ function initStudyHub() {
         return `
           <article class="trick-card" data-subject="${item.subject}" data-keywords="${item.keywords || ''}">
             <div class="card-top-row">
-              <span class="subject-badge">${item.subjectLabel}</span>
+              <span class="subject-badge" data-subject="${item.subject}">${item.subjectLabel}</span>
               <span class="bench-badge">Memory Trick</span>
             </div>
             <h3>${item.title}</h3>
             <div class="trick-formula-box">
               <div>
-                <span class="trick-formula-label">${item.formulaLabel}</span>
+                <span class="trick-formula-label">${item.formulaLabel || 'Mnemonic Formula'}</span>
                 <div class="trick-formula-text">${item.formula}</div>
               </div>
               <div style="font-size: 1.8rem;" aria-hidden="true">💡</div>
@@ -913,9 +1086,9 @@ function initStudyHub() {
                 <span class="btn-download-left">
                   <span class="pdf-badge-tag">PDF</span>
                   <span class="pdf-icon">📄</span>
-                  <span>Download Trick Sheet</span>
+                  <span>Full Detail Sheet (PDF)</span>
                 </span>
-                <span class="pdf-size-badge">${item.pdfSize}</span>
+                <span class="pdf-size-badge">${item.pdfSize || 'Trick Card'}</span>
               </a>
             </div>
           </article>
