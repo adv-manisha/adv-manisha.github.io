@@ -17,6 +17,7 @@
 ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
   initThemeToggle();
+  initDynamicSlogan();
   initBciDisclaimer();
   initNavbar();
   initHamburger();
@@ -26,40 +27,195 @@ document.addEventListener('DOMContentLoaded', () => {
   initLegalQueryForm();
   initCategoryFilters();
   initQuoteCarousel();
+  initStudyHub();
   setFooterYear();
 });
 
 /* ============================================================
-   1B. THEME TOGGLE (LIGHT / DARK) — Defaults to Light
+   1B. THEME TOGGLE (LIGHT / DARK) — Strictly Defaults to Light
 ============================================================ */
 function initThemeToggle() {
-  const toggleBtn = document.getElementById('themeToggle');
-  const iconSpan = document.getElementById('themeIcon');
+  const toggleBtns = document.querySelectorAll('.theme-toggle');
   const STORAGE_KEY = 'adv_theme';
 
-  const updateIcon = (theme) => {
-    if (iconSpan) {
-      // If dark theme, show sun icon (click to switch to light)
-      // If light theme, show moon icon (click to switch to dark)
-      iconSpan.textContent = theme === 'dark' ? '☀️' : '🌙';
-    }
+  const updateToggleUI = (theme) => {
+    const isDark = theme === 'dark';
+    toggleBtns.forEach(btn => {
+      const iconSpan = btn.querySelector('.theme-icon') || btn.querySelector('span');
+      if (iconSpan) {
+        iconSpan.textContent = isDark ? '☀️' : '🌙';
+      }
+      btn.setAttribute('title', isDark ? 'Switch to Light Theme' : 'Switch to Dark Theme');
+      btn.setAttribute('aria-label', isDark ? 'Switch to Light Theme' : 'Switch to Dark Theme');
+      btn.setAttribute('aria-pressed', isDark ? 'true' : 'false');
+    });
   };
 
-  // Determine active theme (default to light)
-  const savedTheme = localStorage.getItem(STORAGE_KEY) || 'light';
+  // Determine active theme: default strictly to 'light'
+  let savedTheme = localStorage.getItem(STORAGE_KEY);
+  if (savedTheme !== 'dark') {
+    savedTheme = 'light';
+  }
   document.documentElement.setAttribute('data-theme', savedTheme);
-  updateIcon(savedTheme);
+  updateToggleUI(savedTheme);
 
-  if (toggleBtn) {
-    toggleBtn.addEventListener('click', () => {
-      const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
-      const nextTheme = currentTheme === 'dark' ? 'light' : 'dark';
+  toggleBtns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const current = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+      const next = current === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      try {
+        localStorage.setItem(STORAGE_KEY, next);
+      } catch (err) {
+        console.warn('Storage unavailable', err);
+      }
+      updateToggleUI(next);
+    });
+  });
+}
 
-      document.documentElement.setAttribute('data-theme', nextTheme);
-      localStorage.setItem(STORAGE_KEY, nextTheme);
-      updateIcon(nextTheme);
+/* ============================================================
+   1C. DYNAMIC LEGAL SLOGAN & CONSTITUTIONAL WISDOM
+   Inspiring law students & public faith in the rule of law
+============================================================ */
+const LEGAL_SLOGANS = [
+  {
+    quote: "Educate, Agitate, Organise. Cultivate the mind; it is the ultimate foundation of human existence and constitutional liberty.",
+    author: "Dr. B.R. Ambedkar",
+    designation: "Architect of the Constitution of India",
+    theme: "Inspiration for Law Students"
+  },
+  {
+    quote: "The law must not remain a stranger to the people it governs. Justice is not a cloistered virtue; it must reach the humblest citizen.",
+    author: "Justice V.R. Krishna Iyer",
+    designation: "Eminent Supreme Court Jurist & Human Rights Champion",
+    theme: "Public Faith in the Rule of Law"
+  },
+  {
+    quote: "The Constitution was not made for the aggrandizement of those who govern; it was framed to preserve the liberties of the governed.",
+    author: "Nani A. Palkhivala",
+    designation: "Legendary Constitutional Jurist & Senior Advocate",
+    theme: "Constitutional Conscience"
+  },
+  {
+    quote: "Even if you are a minority of one, the truth is still the truth. Real swaraj comes by the capacity of all citizens to resist authority when abused.",
+    author: "Mahatma Gandhi",
+    designation: "Father of the Nation & Legal Pioneer",
+    theme: "Courage, Truth & Public Faith"
+  },
+  {
+    quote: "A lawyer without history or literature is a mechanic, a mere working mason; if he possesses some knowledge for these, he may venture to call himself an architect.",
+    author: "Sir Walter Scott / Chief Justice Marshall",
+    designation: "Foundational Maxim for Legal Education",
+    theme: "Inspiration for Law Students"
+  },
+  {
+    quote: "If the salt have lost his savour, wherewith shall it be salted? In a democracy governed by the rule of law, the independence of the bar and judiciary is non-negotiable.",
+    author: "Justice H.R. Khanna",
+    designation: "Supreme Court Jurist (Kesavananda & ADM Jabalpur Dissent)",
+    theme: "Judicial Integrity & Student Conscience"
+  },
+  {
+    quote: "Law is not an end in itself; it is an instrument of social justice. The strength of a legal system lies in the fairness with which it protects the vulnerable.",
+    author: "Justice P.N. Bhagwati",
+    designation: "Former Chief Justice of India & Pioneer of PIL",
+    theme: "Public Faith in the Legal System"
+  },
+  {
+    quote: "A lawyer’s duty is not just to win cases, but to assist the court in arriving at truth and justice with unflinching professional ethics.",
+    author: "Fali S. Nariman",
+    designation: "Eminent Senior Advocate & Constitutional Scholar",
+    theme: "Ethics & Duty of the Bar"
+  }
+];
+
+// Helper method to add new slogans dynamically at runtime
+window.addLegalSlogan = function(sloganObj) {
+  if (sloganObj && sloganObj.quote && sloganObj.author) {
+    LEGAL_SLOGANS.push({
+      quote: sloganObj.quote,
+      author: sloganObj.author,
+      designation: sloganObj.designation || 'Jurist / Legal Scholar',
+      theme: sloganObj.theme || 'Legal Wisdom'
+    });
+    const counterEl = document.getElementById('sloganCounter');
+    if (counterEl) {
+      const currentIdx = parseInt(counterEl.dataset.index || '0', 10);
+      counterEl.textContent = `Quote ${currentIdx + 1} of ${LEGAL_SLOGANS.length}`;
+    }
+  }
+};
+
+function initDynamicSlogan() {
+  const quoteEl = document.getElementById('sloganQuoteText');
+  const authorEl = document.getElementById('sloganAuthorText');
+  const roleEl = document.getElementById('sloganRoleText');
+  const themeEl = document.getElementById('sloganTheme');
+  const counterEl = document.getElementById('sloganCounter');
+  const shuffleBtn = document.getElementById('btnShuffleSlogan');
+  const sectionEl = document.querySelector('.dynamic-slogan-section');
+
+  if (!quoteEl || !authorEl) return;
+
+  let currentIndex = 0;
+  let autoTimer = null;
+  let isTransitioning = false;
+
+  function renderSlogan(index) {
+    if (isTransitioning) return;
+    isTransitioning = true;
+
+    currentIndex = (index + LEGAL_SLOGANS.length) % LEGAL_SLOGANS.length;
+    const item = LEGAL_SLOGANS[currentIndex];
+
+    // Smooth fade transition
+    quoteEl.classList.add('fading');
+
+    setTimeout(() => {
+      quoteEl.textContent = `"${item.quote}"`;
+      authorEl.textContent = `— ${item.author}`;
+      if (roleEl) roleEl.textContent = item.designation;
+      if (themeEl) themeEl.textContent = item.theme;
+      if (counterEl) {
+        counterEl.textContent = `Quote ${currentIndex + 1} of ${LEGAL_SLOGANS.length}`;
+        counterEl.dataset.index = currentIndex;
+      }
+      quoteEl.classList.remove('fading');
+      isTransitioning = false;
+    }, 280);
+  }
+
+  function startAutoCycle() {
+    stopAutoCycle();
+    autoTimer = setInterval(() => {
+      renderSlogan(currentIndex + 1);
+    }, 8000);
+  }
+
+  function stopAutoCycle() {
+    if (autoTimer) {
+      clearInterval(autoTimer);
+      autoTimer = null;
+    }
+  }
+
+  if (shuffleBtn) {
+    shuffleBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      renderSlogan(currentIndex + 1);
+      startAutoCycle();
     });
   }
+
+  // Pause rotation on user hover
+  if (sectionEl) {
+    sectionEl.addEventListener('mouseenter', stopAutoCycle);
+    sectionEl.addEventListener('mouseleave', startAutoCycle);
+  }
+
+  renderSlogan(0);
+  startAutoCycle();
 }
 
 /* ============================================================
@@ -472,4 +628,214 @@ function setFooterYear() {
   yearEls.forEach(el => {
     el.textContent = currentYear;
   });
+}
+
+/* ============================================================
+   12. STUDY HUB (LANDMARK JUDGMENTS, SUBJECT NOTES & RECALL TRICKS)
+============================================================ */
+function initStudyHub() {
+  const tabBtns = document.querySelectorAll('.study-tab-btn');
+  const panels = document.querySelectorAll('.study-tab-panel');
+  const searchInput = document.getElementById('studySearchInput');
+  const searchClear = document.getElementById('studySearchClear');
+  const filterPills = document.querySelectorAll('.filter-pill');
+  const emptyState = document.getElementById('studyEmptyState');
+  const viewToggleBtns = document.querySelectorAll('.view-toggle-btn');
+  const courtScopeSelect = document.getElementById('courtScopeSelect');
+
+  if (!tabBtns.length) return;
+
+  let activeFilter = 'all';
+  let activeCourtScope = 'all';
+
+  // 1. Tab Switching (Judgments vs Notes vs Tricks)
+  tabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      tabBtns.forEach(b => {
+        b.classList.remove('active');
+        b.setAttribute('aria-selected', 'false');
+      });
+      btn.classList.add('active');
+      btn.setAttribute('aria-selected', 'true');
+
+      const targetId = btn.getAttribute('data-tab');
+      panels.forEach(p => {
+        p.classList.remove('active');
+      });
+
+      const targetPanel = document.getElementById(targetId);
+      if (targetPanel) {
+        targetPanel.classList.add('active');
+      }
+
+      applyFilterAndSearch();
+    });
+  });
+
+  // 2. Sub-View Switching in Landmark Judgments (Subject Table vs Year Table vs Cards)
+  if (viewToggleBtns.length) {
+    viewToggleBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        viewToggleBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const viewType = btn.getAttribute('data-view');
+        const matrixViews = document.querySelectorAll('.legal-matrix-view');
+        matrixViews.forEach(v => v.classList.remove('active'));
+
+        if (viewType === 'subject-table') {
+          const target = document.getElementById('viewSubjectTable');
+          if (target) target.classList.add('active');
+        } else if (viewType === 'year-table') {
+          const target = document.getElementById('viewYearTable');
+          if (target) target.classList.add('active');
+        } else if (viewType === 'cards') {
+          const target = document.getElementById('viewCards');
+          if (target) target.classList.add('active');
+        }
+
+        applyFilterAndSearch();
+      });
+    });
+  }
+
+  // 3. Court Scope Dropdown Filter
+  if (courtScopeSelect) {
+    courtScopeSelect.addEventListener('change', () => {
+      activeCourtScope = courtScopeSelect.value || 'all';
+      applyFilterAndSearch();
+    });
+  }
+
+  // 4. Category Filter Pills
+  filterPills.forEach(pill => {
+    pill.addEventListener('click', () => {
+      filterPills.forEach(p => p.classList.remove('active'));
+      pill.classList.add('active');
+      activeFilter = pill.getAttribute('data-filter') || 'all';
+      applyFilterAndSearch();
+    });
+  });
+
+  // 5. Live Search Input
+  if (searchInput) {
+    searchInput.addEventListener('input', () => {
+      if (searchClear) {
+        if (searchInput.value.trim().length > 0) {
+          searchClear.classList.add('visible');
+        } else {
+          searchClear.classList.remove('visible');
+        }
+      }
+      applyFilterAndSearch();
+    });
+  }
+
+  // 6. Clear Search Button
+  if (searchClear) {
+    searchClear.addEventListener('click', () => {
+      if (searchInput) {
+        searchInput.value = '';
+        searchClear.classList.remove('visible');
+        searchInput.focus();
+      }
+      applyFilterAndSearch();
+    });
+  }
+
+  // 7. Unified Filter & Search Logic
+  function applyFilterAndSearch() {
+    const query = searchInput ? searchInput.value.trim().toLowerCase() : '';
+    const activePanel = document.querySelector('.study-tab-panel.active');
+    if (!activePanel) return;
+
+    let visibleCount = 0;
+
+    // Helper: Court matching logic
+    function matchesCourt(courtId, courtType) {
+      if (activeCourtScope === 'all') return true;
+      if (activeCourtScope === 'sc') return courtType === 'sc';
+      if (activeCourtScope === 'hc-all') return courtType === 'hc';
+      return courtId === activeCourtScope;
+    }
+
+    // A. Filter Table Views (viewSubjectTable & viewYearTable)
+    const activeMatrixView = activePanel.querySelector('.legal-matrix-view.active');
+    if (activeMatrixView && (activeMatrixView.id === 'viewSubjectTable' || activeMatrixView.id === 'viewYearTable')) {
+      const rows = activeMatrixView.querySelectorAll('tbody tr[data-court]');
+      
+      rows.forEach(row => {
+        const rowSubject = row.getAttribute('data-subject') || '';
+        const rowCourt = row.getAttribute('data-court') || '';
+        const rowCourtType = row.getAttribute('data-court-type') || '';
+        const rowKeywords = (row.getAttribute('data-keywords') || '').toLowerCase();
+        const rowText = row.textContent.toLowerCase();
+
+        const filterMatch = (activeFilter === 'all') || (rowSubject === activeFilter);
+        const courtMatch = matchesCourt(rowCourt, rowCourtType);
+        const searchMatch = (!query) || rowText.includes(query) || rowKeywords.includes(query);
+
+        if (filterMatch && courtMatch && searchMatch) {
+          row.style.display = '';
+          visibleCount++;
+        } else {
+          row.style.display = 'none';
+        }
+      });
+
+      // Show/hide parent sections/subgroups based on child row visibility
+      const groups = activeMatrixView.querySelectorAll('.legal-group-section');
+      groups.forEach(group => {
+        const groupRows = group.querySelectorAll('tbody tr[data-court]');
+        const hasVisible = Array.from(groupRows).some(r => r.style.display !== 'none');
+        group.style.display = hasVisible ? '' : 'none';
+
+        // Also check subgroups if present
+        const subgroups = group.querySelectorAll('.court-subgroup');
+        subgroups.forEach(sub => {
+          const subRows = sub.querySelectorAll('tbody tr[data-court]');
+          const subHasVisible = Array.from(subRows).some(r => r.style.display !== 'none');
+          sub.style.display = subHasVisible ? '' : 'none';
+        });
+      });
+    }
+
+    // B. Filter Cards (in viewCards or other tab panels like Notes and Tricks)
+    const cards = activePanel.querySelectorAll('.judgment-card, .note-card, .trick-card');
+    cards.forEach(card => {
+      const subject = card.getAttribute('data-subject') || '';
+      const cardCourt = card.getAttribute('data-court') || '';
+      const cardCourtType = card.getAttribute('data-court-type') || '';
+      const keywords = (card.getAttribute('data-keywords') || '').toLowerCase();
+      const text = card.textContent.toLowerCase();
+
+      // Check Category Filter
+      const matchesFilter = (activeFilter === 'all') || (subject === activeFilter);
+
+      // Check Court Filter (if applicable to judgment cards)
+      const matchesCourtScope = cardCourt ? matchesCourt(cardCourt, cardCourtType) : true;
+
+      // Check Keyword Search
+      const matchesSearch = (!query) || text.includes(query) || keywords.includes(query);
+
+      if (matchesFilter && matchesCourtScope && matchesSearch) {
+        card.style.display = 'flex';
+        // Only increment visibleCount if viewCards is active or we are in another tab
+        if (!activeMatrixView || activeMatrixView.id === 'viewCards') {
+          visibleCount++;
+        }
+      } else {
+        card.style.display = 'none';
+      }
+    });
+
+    // Update empty state
+    if (emptyState) {
+      if (visibleCount === 0) {
+        emptyState.classList.add('visible');
+      } else {
+        emptyState.classList.remove('visible');
+      }
+    }
+  }
 }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -13,11 +13,12 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  <!-- Theme Initializer (Defaults to light theme) -->
+  <!-- Theme Initializer (Strictly defaults to light theme) -->
   <script>
     (function() {
-      var saved = localStorage.getItem('adv_theme') || 'light';
-      document.documentElement.setAttribute('data-theme', saved);
+      var saved = localStorage.getItem('adv_theme');
+      var theme = (saved === 'dark') ? 'dark' : 'light';
+      document.documentElement.setAttribute('data-theme', theme);
     })();
   </script>
 </head>
@@ -63,6 +64,7 @@
           <li><a href="index.html#home">Home</a></li>
           <li><a href="index.html#about">About</a></li>
           <li><a href="index.html#services">Practice Areas</a></li>
+          <li><a href="study.html">Study Hub</a></li>
           <!-- Uncomment when ready:
           <li><a href="research.html">Research</a></li>
           <li><a href="publications.html" class="active">Publications</a></li>
@@ -70,10 +72,12 @@
           -->
           <li><a href="index.html#contact">Contact</a></li>
           <li><a href="index.html#contact" class="nav-cta">Legal Query</a></li>
+          <li class="nav-theme-item">
+            <button id="themeToggle" type="button" class="theme-toggle" aria-label="Toggle dark/light theme" title="Switch to Dark Theme">
+              <span id="themeIcon" class="theme-icon">🌙</span>
+            </button>
+          </li>
         </ul>
-        <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark/light theme" title="Switch Theme">
-          <span id="themeIcon">🌙</span>
-        </button>
         <button class="hamburger" id="hamburger" aria-label="Open menu">
           <span></span><span></span><span></span>
         </button>
@@ -186,6 +190,7 @@
         <a href="index.html#home">Home</a>
         <a href="index.html#about">About</a>
         <a href="index.html#services">Practice Areas</a>
+        <a href="study.html">Study Hub</a>
         <!-- Uncomment when ready:
         <a href="research.html">Research</a>
         <a href="publications.html">Publications</a>

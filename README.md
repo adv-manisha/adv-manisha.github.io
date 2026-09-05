@@ -64,7 +64,25 @@ The portal features a bespoke **Editorial Legal Aesthetic** with a full **Light 
 8. **Client Query & Consultation Hub:**
    - Direct intake form for legal queries, advisory requests, and academic collaboration.
    - Verified contact channels (Email, LinkedIn, Curriculum Vitae download).
-   - Inspiring jurist quotes carousel (Dr. B.R. Ambedkar, Nani Palkhivala, Fali S. Nariman).
+9. **Dynamic Legal Slogans & Wisdom Banner:**
+   - Curated constitutional maxims from Dr. B.R. Ambedkar, Nani Palkhivala, Justice Krishna Iyer, Justice H.R. Khanna, and Mahatma Gandhi.
+   - Inspires law students and strengthens public faith in the rule of law.
+   - Interactive "Inspire Another ↻" shuffle button and auto-rotation with hover pause.
+   - Customizable via `LEGAL_SLOGANS` array or runtime `window.addLegalSlogan()`.
+10. **Dual Theme Engine (Light & Dark):**
+    - Strictly defaults to **Light Theme** for initial visits.
+    - Theme toggle button seamlessly integrated at the end of the navbar, directly beside "Legal Query".
+    - High-contrast, WCAG-compliant footer text in both themes.
+11. **Law Glimpse Legal Study Hub & Memory Recall Aids (`study.html`):**
+    - **Multi-Dimensional Landmark Judgments System**:
+      - **📑 Subject-Wise Legal Reference Table**: Categorized across Constitutional Law, Corporate & SEBI, Criminal Law & BNSS, Commercial Contracts, and Arbitration & ADR — segregated into **Supreme Court of India (Apex Precedents)** and **State High Courts (State-Wise Jurisprudence)** including Gujarat High Court, Bombay High Court, and Delhi High Court.
+      - **📅 Year-Wise Chronological Table**: Structured across evolutionary epochs (2024–2023, 2022–2020, 2019–2015, 2014–2010, and Foundational Precedents pre-2010), displaying forum, subject, key holding, and PDF brief.
+      - **🃏 Card View**: Visual card layout with core ratio decidendi callout boxes and bulleted takeaways.
+      - **Court Scope Filter**: Instant filtering by *All Courts*, *Supreme Court*, *State High Courts (All)*, *Gujarat High Court*, *Bombay High Court*, and *Delhi High Court*.
+    - **Subject-Wise Statutory Notes**: Structured modules on Company Law, SEBI LODR, New Criminal Laws (BNS, BNSS, BSA 2023), Constitutional Law, and Commercial Contracts with downloadable reference PDFs.
+    - **Cognitive Recall Tricks & Mnemonics**: High-retention memory formulas for judicial exams and law students (e.g. *SAMROP* Art 19(1), *SOUP DISC* Art 19(2), *WIB* Cognizable arrest tree, *ANSR* SEBI committees, *Frustration 4-Step Test*) with visual formula boxes and downloadable reference cards.
+    - **Real-Time Search & Subject Filter**: Dynamic keyword lookup and filter pills (Constitutional, Corporate, Criminal, Contracts) across both tables and cards with instant results.
+    - **100% BCI Rule 36 Compliant**: Non-commercial scholarly education and student empowerment.
 
 ---
 
@@ -72,18 +90,39 @@ The portal features a bespoke **Editorial Legal Aesthetic** with a full **Light 
 
 ```text
 adv-manisha.github.io/
-├── index.html          # Main portal: Hero, About, Law Glimpse, Practice Areas, Query Hub
-├── research.html       # Dedicated Research Papers & Academic Drafts repository
-├── publications.html   # Dedicated Journal & Conference Presentations repository
-├── blog.html           # Dedicated Legal Perspectives & Articles repository
-├── style.css           # Design tokens, BCI modal, forms, responsive grid, animations
-├── script.js           # Multi-page nav, BCI modal handler, query form validation, filters
-├── README.md           # Documentation & project architecture (this file)
-├── logo.png            # Official brand monogram / logo
-├── profile.png         # Advocate portrait image
-├── favicon-16.png      # 16x16 Favicon
-├── favicon-32.png      # 32x32 Favicon
-└── favicon-180.png     # Apple Touch Icon
+├── index.html                  # Main portal: Hero, Dynamic Slogans, About, Law Glimpse, Practice Areas, Query Hub
+├── study.html                  # Legal Study Hub: Landmark Judgments, Subject Notes & Recall Tricks
+├── research.html               # Dedicated Research Papers & Academic Drafts repository
+├── publications.html           # Dedicated Journal & Conference Presentations repository
+├── blog.html                   # Dedicated Legal Perspectives & Articles repository
+├── style.css                   # Design tokens, theme variables, study hub cards, responsive grid
+├── script.js                   # Theme toggle, dynamic slogans, study hub search/filtering, BCI modal
+├── README.md                   # Documentation & project architecture (this file)
+├── materials/                  # Downloadable academic study PDFs
+│   ├── landmark-judgments/     # Case brief PDFs (Kesavananda, Puttaswamy, Sahara, Tata, Lalita Kumari, D.K. Basu)
+│   ├── subject-notes/          # Comprehensive subject note PDFs (Company Law, SEBI, BNS/BNSS, Constitution, Contracts)
+│   └── recall-tricks/          # Visual memory aid PDFs (SAMROP, SOUP DISC, WIB tree, ANSR, Frustration test)
+├── law-glimpse-logo.png        # Official Law Glimpse brand logo
+├── logo.png                    # Official brand monogram / logo
+├── profile.png                 # Advocate portrait image
+├── favicon-16.png              # 16x16 Favicon
+├── favicon-32.png              # 32x32 Favicon
+└── favicon-180.png             # Apple Touch Icon
+```
+
+---
+
+### 💡 Adding Dynamic Legal Slogans
+
+To add new inspiring slogans for students and citizens, simply append to the `LEGAL_SLOGANS` array in `script.js` or call `window.addLegalSlogan()`:
+
+```javascript
+window.addLegalSlogan({
+  quote: "The arc of the moral universe is long, but it bends toward justice.",
+  author: "Martin Luther King Jr.",
+  designation: "Civil Rights Leader",
+  theme: "Faith in Universal Justice"
+});
 ```
 
 ---
